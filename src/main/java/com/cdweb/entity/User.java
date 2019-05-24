@@ -23,6 +23,8 @@ import javax.persistence.UniqueConstraint;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "user")
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class User implements Serializable {
@@ -45,10 +47,12 @@ public class User implements Serializable {
 
 	@JoinColumn(name = "idPosition")
 	@OneToOne
+	@JsonIgnore
 	private Position position;
 
 	@JoinColumn(name = "idDepartment")
 	@OneToOne()
+	@JsonIgnore
 	private Department department;
 
 	private String avatar;
@@ -62,14 +66,17 @@ public class User implements Serializable {
 
 	@JoinColumn(name = "idUser")
 	@OneToMany(fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Set<UserRole> listUserRole = new HashSet<UserRole>(0);
 	
 	@JoinColumn(name="idUser")
 	@OneToMany
+	@JsonIgnore
 	private List<Vacancy> listVacancy;
 	
 	@JoinColumn(name="idUser")
 	@OneToMany
+	@JsonIgnore
 	private List<InterviewerScheduleInterview> listInterviewerScheduleInterview;
 	
 	

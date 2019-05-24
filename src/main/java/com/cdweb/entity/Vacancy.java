@@ -1,5 +1,6 @@
 package com.cdweb.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.jmx.snmp.Timestamp;
 
 @Entity(name = "vacancy")
@@ -19,16 +21,18 @@ public class Vacancy {
 	private int idVacancy;
 
 	private String vacancyNumber;
-	private Timestamp dateCreated;
+	private Date dateCreated;
 
 	@JoinColumn(name = "idUser")
 	@OneToOne
+	@JsonIgnore
 	private User user;
 
 	private String state;
 
 	@JoinColumn(name = "idPosition")
 	@OneToOne
+	@JsonIgnore
 	private Position position;
 
 	private String description;
@@ -36,12 +40,14 @@ public class Vacancy {
 
 	@JoinColumn(name = "idDepartment")
 	@OneToOne
+	@JsonIgnore
 	private Department department;
 
-	private Timestamp dateClose;
+	private Date dateClose;
 	
 	@JoinColumn(name="idVacancy")
 	@OneToMany
+	@JsonIgnore
 	private List<ApplicantVacancy> listApplicantVacancy;
 
 	public Vacancy() {
@@ -64,11 +70,11 @@ public class Vacancy {
 		this.vacancyNumber = vacancyNumber;
 	}
 
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
@@ -120,11 +126,11 @@ public class Vacancy {
 		this.department = department;
 	}
 
-	public Timestamp getDateClose() {
+	public Date getDateClose() {
 		return dateClose;
 	}
 
-	public void setDateClose(Timestamp dateClose) {
+	public void setDateClose(Date dateClose) {
 		this.dateClose = dateClose;
 	}
 

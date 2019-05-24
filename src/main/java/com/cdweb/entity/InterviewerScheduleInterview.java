@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name="interviewer_scheduleinterview")
 public class InterviewerScheduleInterview {
 	@Id
@@ -15,10 +17,12 @@ public class InterviewerScheduleInterview {
 	
 	@JoinColumn(name="idUser")
 	@OneToOne
+	@JsonIgnore
 	private User user;
 	
 	@JoinColumn(name="idSchedule")
 	@OneToOne
+	@JsonIgnore
 	private ScheduleInterviewDetails scheduleInterviewDetails;
 
 	public int getIdInterviewSI() {

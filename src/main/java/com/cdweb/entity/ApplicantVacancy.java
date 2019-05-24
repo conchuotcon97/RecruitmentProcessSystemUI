@@ -1,5 +1,6 @@
 package com.cdweb.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,7 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.sun.jmx.snmp.Timestamp;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity(name = "applicant_vacancy")
 public class ApplicantVacancy {
@@ -23,22 +25,25 @@ public class ApplicantVacancy {
 
 	@JoinColumn(name = "idVacancy")
 	@OneToOne
+	@JsonIgnore
 	private Vacancy vacancy;
 
-	private Timestamp dateOnApplicantVacancy;
+	private Date dateOnApplicantVacancy;
 	private String state;
 	private String cv;
 
 	@JoinColumn(name = "idSchedule")
 	@OneToOne
+	@JsonIgnore
 	private ScheduleInterviewDetails scheduleInterviewDetails;
 	
 	@JoinColumn(name="idApplicantVacancy")
 	@OneToMany
+	@JsonIgnore
 	private List<ApplicantDetails> listApplicantDetails;
 
 	public ApplicantVacancy(String applicantVacancy, String applicantVacancyName, String emailApplicant,
-			Vacancy vacancy, Timestamp dateOnApplicantVacancy, String state, String cv,
+			Vacancy vacancy, Date dateOnApplicantVacancy, String state, String cv,
 			ScheduleInterviewDetails scheduleInterviewDetails) {
 		super();
 		this.applicantVacancy = applicantVacancy;
@@ -95,11 +100,11 @@ public class ApplicantVacancy {
 		this.vacancy = vacancy;
 	}
 
-	public Timestamp getDateOnApplicantVacancy() {
+	public Date getDateOnApplicantVacancy() {
 		return dateOnApplicantVacancy;
 	}
 
-	public void setDateOnApplicantVacancy(Timestamp dateOnApplicantVacancy) {
+	public void setDateOnApplicantVacancy(Date dateOnApplicantVacancy) {
 		this.dateOnApplicantVacancy = dateOnApplicantVacancy;
 	}
 

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "position")
 public class Position {
 	@Id
@@ -20,10 +22,12 @@ public class Position {
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPosition")
+	@JsonIgnore
 	private List<User> listUser;
 	
 	@OneToMany
 	@JoinColumn(name = "idPosition")
+	@JsonIgnore
 	private List<Vacancy> listVacancy;;
 
 	public Position(String positionName, List<User> listUser) {

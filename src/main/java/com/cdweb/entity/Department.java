@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "department")
 public class Department {
 	@Id
@@ -21,10 +23,12 @@ public class Department {
 
 	@OneToMany()
 	@JoinColumn(name = "idDepartment")
+	@JsonIgnore
 	private List<User> listUser = new ArrayList<User>();
 	
 	@OneToMany
 	@JoinColumn(name="idDepartment")
+	@JsonIgnore
 	private List<Vacancy> listVacancy;
 
 	public Department(String departmentName, List<User> listUser) {

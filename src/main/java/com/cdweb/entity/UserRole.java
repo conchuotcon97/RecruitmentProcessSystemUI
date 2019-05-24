@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="user_role")
@@ -31,10 +33,12 @@ public class UserRole implements Serializable{
 	
 	@JoinColumn(name="idUser")
 	@ManyToOne
+	@JsonIgnore
 	private User user;
 
 	@JoinColumn(name="idRole")
 	@ManyToOne
+	@JsonIgnore
 	private Role role;
 
 	public UserRole(User user, Role role) {

@@ -1,5 +1,7 @@
 package com.cdweb.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,9 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import com.sun.jmx.snmp.Timestamp;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
+
 
 @Entity(name = "applicant_details")
+
 public class ApplicantDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,12 +23,13 @@ public class ApplicantDetails {
 
 	@JoinColumn(name = "idapplicantVacancy")
 	@OneToOne
+	@JsonIgnore
 	private ApplicantVacancy applicantVacancy;
 
-	private Timestamp dateCreate;;
+	private Date dateCreate;
 	private String state;
 
-	public ApplicantDetails(ApplicantVacancy applicantVacancy, Timestamp dateCreate, String state) {
+	public ApplicantDetails(ApplicantVacancy applicantVacancy, Date dateCreate, String state) {
 		super();
 		this.applicantVacancy = applicantVacancy;
 		this.dateCreate = dateCreate;
@@ -49,11 +56,11 @@ public class ApplicantDetails {
 		this.applicantVacancy = applicantVacancy;
 	}
 
-	public Timestamp getDateCreate() {
+	public Date getDateCreate() {
 		return dateCreate;
 	}
 
-	public void setDateCreate(Timestamp dateCreate) {
+	public void setDateCreate(Date dateCreate) {
 		this.dateCreate = dateCreate;
 	}
 

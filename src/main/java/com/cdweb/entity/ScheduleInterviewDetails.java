@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "schedule_interview_details")
 public class ScheduleInterviewDetails {
 	@Id
@@ -22,10 +24,12 @@ public class ScheduleInterviewDetails {
 	
 	@JoinColumn(name="idSchedule")
 	@OneToMany
+	@JsonIgnore
 	private List<InterviewerScheduleInterview> listInterviewerScheduleInterview;
 
 	@JoinColumn(name="idSchedule")
 	@OneToMany
+	@JsonIgnore
 	private List<ApplicantVacancy> listApplicantVacancy;
 	
 	public ScheduleInterviewDetails() {
