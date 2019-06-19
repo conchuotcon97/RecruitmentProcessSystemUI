@@ -1,12 +1,12 @@
-import {Department} from "./department.model";
-import {Position} from "./position.model";
+import {Department} from './department.model';
+import {Position} from './position.model';
 
 export class User {
   public idUser: number;
   public userNumber: string;
   public fullName: string;
   public email: string;
-  public name: string;
+  public username: string;
   public password: string;
   public  position: Position;
   public  department: Department;
@@ -16,7 +16,7 @@ export class User {
   public  phone: string;
   public  address: string;
   authorities: string[];
-  authenticated : boolean;
+  authenticated: boolean;
   // public roles:string[];
 
 }

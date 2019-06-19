@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../service/authentication.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '../service/translate.service';
-import {User} from "../model/user.model";
+import {User} from '../model/user.model';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import {User} from "../model/user.model";
 export class LoginComponent implements OnInit {
   // user = new user();
   credentials = {username: '', password: ''};
-  error = ''
+  error = '';
   invalidLogin = false;
   loginForm: FormGroup;
   username: FormControl;
