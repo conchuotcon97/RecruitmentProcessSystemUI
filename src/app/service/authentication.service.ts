@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../model/user.model';
-import {map} from 'rxjs/operators';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subscribable} from 'rxjs';
 import {apiRoot} from '../app.component';
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class AuthenticationService {
   public authenticated = false;
   currentUserSubject: BehaviorSubject<User>;
   currentUser: Observable<User>;
+  user: User;
 
   constructor(
     private httpClient: HttpClient
@@ -26,19 +27,21 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  authenticate(username, password): Observable<User> {
+  authenticate(username, password) {
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(username + ':' + password)});
-    this.httpClient.get(`${apiRoot}/user`, {headers}).pipe(
+   return this.httpClient.get(`${apiRoot}/user`, {headers}).pipe(
       map(
         (userData: User) => {
+          console.log('aaaaaaaaaaaaaaaaa')
+          console.log(userData);
           sessionStorage.setItem('token',
             btoa(username + ':' + password));
           sessionStorage.setItem('username', username);
           localStorage.setItem('currentUser', JSON.stringify(userData));
-          this.currentUser = of(userData);
+          return userData
         }));
-   return this.currentUser;
   }
+
 
   getToken() {
     return sessionStorage.getItem('token');

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin() {
-    (this.loginservice.authenticate(this.username.value, this.password.value).subscribe(
+    this.loginservice.authenticate(this.username.value, this.password.value).subscribe(
         (data) => {
           if (data['name']) {
             this.router.navigate(['/view-vacancy']);
@@ -57,13 +57,10 @@ export class LoginComponent implements OnInit {
         error => {
           this.invalidLogin = true,
             this.error = error;
-
         }
       )
-    );
-
+    ;
   }
-
 }
 
 // export class user{
