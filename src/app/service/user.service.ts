@@ -25,5 +25,8 @@ export class UserService {
     return this.httpClient.get<User>(`${apiRoot}/user`, {headers: this.headers});
 
   }
+  updateProfile(id: number): Observable<User>{
+    return this.httpClient.put()
+  }
 
 }

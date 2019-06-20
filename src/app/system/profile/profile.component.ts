@@ -6,6 +6,7 @@ import {UserService} from '../../service/user.service';
 import {apiRoot} from '../../app.component';
 import {Department} from '../../model/department.model';
 import {Position} from '../../model/position.model';
+import {AuthenticationService} from '../../service/authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -32,6 +33,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(protected httpClient: HttpClient,
               protected userService: UserService,
+              protected authenticationService: AuthenticationService,
               protected fBuild: FormBuilder) {
   }
 
@@ -46,11 +48,15 @@ export class ProfileComponent implements OnInit {
     this.userService.getProfileUser().subscribe(res => this.profileInf = res);
   }
 
+  updateProfile(user: User) {
+    this.userService.updateProfile(user.idUser);
+  }
+
   onsubmit() {
     if (this.myForm.valid) {
       console.log(this.myForm.value);
-
-      this.httpClient.put(`${apiRoot}/user`, this.myForm.value);
+      const id = this.authenticationService.getCurrentUserValue().idUser;
+      this.myForm.valueChanges.subscribe(data => this.updateProfile(data));
       this.myForm.reset();
     }
   }
