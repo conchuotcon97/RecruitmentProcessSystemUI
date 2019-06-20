@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {Position} from "../model/position.model";
-import {PositionService} from "../service/position.service";
-import {apiRoot} from "../app.component";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Position} from '../model/position.model';
+import {PositionService} from '../service/position.service';
+import {apiRoot} from '../app.component';
+import {AuthenticationService} from '../service/authentication.service';
+import {ActivatedRoute} from '@angular/router';
+import {User} from '../model/user.model';
 
 @Component({
   selector: 'app-create-applicant',
@@ -13,93 +16,129 @@ import {apiRoot} from "../app.component";
 export class CreateApplicantComponent implements OnInit {
   myForm: FormGroup;
   id: FormControl;
-  name: FormControl;
-  email: FormControl;
+  applicantVacancyName: FormControl;
+  emailApplicant: FormControl;
   phone: FormControl;
   vacacyNumber: FormControl;
-  idPosition :FormControl;
+  idPosition: FormControl;
   positionName: FormControl;
-  dateOfApplicant: FormControl;
-  status: FormControl;
+  dateOnApplicantVacancy: FormControl;
+  state: FormControl;
   experience: FormControl;
-  nameOfTheInterviewer: FormControl;
-  dateScheduled: FormControl;
-  start: FormControl;
-  end: FormControl;
-  positionList: Position[]=[];
-  cv : FormControl;
-  constructor(protected httpClient: HttpClient , private positionService: PositionService) {
+  listIdUser: FormControl;
+  dateOfTheScheduleInterview: FormControl;
+  startTime: FormControl;
+  endTime: FormControl;
+  cv: FormControl;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Basic ${this.authenticationService.getToken()}`,
+      'Access-Control-Allow-Origin': '*'
+    })
+  };
+  interviewerList: User[] = [];
+
+  constructor(protected httpClient: HttpClient, private positionService: PositionService,
+              protected  authenticationService: AuthenticationService,
+              protected  route: ActivatedRoute
+  ) {
   }
 
   ngOnInit() {
+    console.log(this.authenticationService.getToken());
     this.createFormControls();
     this.createForm();
-    this.getPositionList();
+    // this.getPositionList();
+    this.getVacancyNumber();
+    this.getListOfInterviewer();
   }
+
   getPositionList() {
     this.positionService.getAllPosition().subscribe((data: Position[]) => {
-      this.positionList = data;
+      // this.positionList = data;
     });
   }
 
+  getVacancyNumber(): string {
+    return this.route.snapshot.paramMap.get('vacancyNumber');
+  }
+
+  // getPositionList() {
+  //   this.positionService.getAllPosition().subscribe((data: Position[]) => {
+  //     this.positionList = data;
+  //   });
+  // }
   onsubmit() {
     console.log(this.myForm.value);
-    this.httpClient.post(`${apiRoot}/hr/applicantVacancy/${this.myForm.value.vacancyNumber}/addApplicantVacancy`, this.myForm.value);
-    if (this.myForm.valid) {
-      console.log(this.myForm.value);
-      this.myForm.reset();
-    }
+    const body = Object.assign({}, this.myForm.value);
+    this.httpClient.post(`${apiRoot}/hr/applicantVacancy/${this.getVacancyNumber()}/addApplicantVacancy`,
+      body, this.httpOptions).subscribe(data => {
+        console.log(data);
+      }
+    );
+    // if (this.myForm.valid) {
+    //   console.log(this.myForm.value);
+    //   this.myForm.reset();
+    // }
 
   }
 
 
   createFormControls() {
     this.id = new FormControl('', Validators.required);
-    this.name = new FormControl('', Validators.required);
-    this.email = new FormControl('', Validators.required);
+    this.applicantVacancyName = new FormControl('', Validators.required);
+    this.emailApplicant = new FormControl('', Validators.required);
     this.phone = new FormControl('', Validators.required);
     this.vacacyNumber = new FormControl('', Validators.required);
-    this.idPosition = new FormControl('', Validators.required);
-    this.dateOfApplicant = new FormControl('', Validators.required);
-    this.status = new FormControl('', Validators.required);
+    this.dateOnApplicantVacancy = new FormControl('', Validators.required);
+    this.state = new FormControl('', Validators.required);
     this.experience = new FormControl('', Validators.required);
-    this.nameOfTheInterviewer = new FormControl('', Validators.required);
-    this.dateScheduled = new FormControl('', Validators.required);
-    this.start = new FormControl('', Validators.required);
-    this.end = new FormControl('', Validators.required);
-    this.positionName = new FormControl('');
+    this.listIdUser = new FormControl('', Validators.required);
+    this.dateOfTheScheduleInterview = new FormControl('', Validators.required);
+    this.startTime = new FormControl('', Validators.required);
+    this.endTime = new FormControl('', Validators.required);
     this.cv = new FormControl('');
   }
 
   createForm() {
     this.myForm = new FormGroup({
       id: this.id,
-      name: this.name,
-      email: this.email,
+      applicantVacancyName: this.applicantVacancyName,
+      emailApplicant: this.emailApplicant,
       phone: this.phone,
       vacacyNumber: this.vacacyNumber,
-      position: new FormGroup({
-        positionName: this.positionName,
-        idPosition: this.idPosition
-      }),
-      dateOfApplicant: this.dateOfApplicant,
-      status: this.status,
+      dateOnApplicantVacancy: this.dateOnApplicantVacancy,
+      state: this.state,
       experience: this.experience,
-      nameOfTheInterviewer: this.nameOfTheInterviewer,
-      dateScheduled: this.dateScheduled,
-      start: this.start,
-      end: this.end,
+      listIdUser: this.listIdUser,
+      dateOfTheScheduleInterview: this.dateOfTheScheduleInterview,
+      startTime: this.startTime,
+      endTime: this.endTime,
       cv: this.cv
     });
 
   }
-  selectPosition($event): FormControl {
-    this.getPositionList();
-    const id = $event;
-    const positionName = this.positionList.find(po => po.idPosition = id).positionName;
-    this.positionName.setValue(positionName);
-    this.idPosition.setValue( Number.parseInt(id));
-    return this.positionName;
+
+  // selectPosition($event)
+  //   :
+  //   FormControl {
+  //   this.getPositionList();
+  //   const id = $event;
+  //   const positionName = this.positionList.find(po => po.idPosition = id).positionName;
+  //   this.positionName.setValue(positionName);
+  //   this.idPosition.setValue(Number.parseInt(id));
+  //   return this.positionName;
+  // }
+
+    getListOfInterviewer() {
+      return this.httpClient.get(`${apiRoot}/hr/get-list`).subscribe((data: User[]) => {
+        this.interviewerList = data;
+      });
+    }
+
+
   }
-}
+
+
 

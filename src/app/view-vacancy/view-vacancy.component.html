@@ -32,13 +32,13 @@
     </table>
     </form>
     <div class="btnAll">
-      <button class="btnSearch" (click)="onsubmit()"><i class="fa fa-search"></i> {{'btnSearch' | translate}}</button>
+      <button class="btnSearch" (click)="onsubmit1()"><i class="fa fa-search"></i> {{'btnSearch' | translate}}</button>
       <button class="btnCreateVacancy"><i class="fa fa-plus"></i> {{'btnCreateVacancy' | translate}}</button>
       <button class="btnExport">{{'btnExport' | translate}}</button>
     </div>
   </div>
   <div class="viewVacancyBot">
-    <table class="table table-striped">
+    <table class="table table-striped container1">
       <tr>
         <th>{{'idVacancy' | translate}}</th>
         <th>{{'dateCreated' | translate}}</th>
@@ -74,7 +74,92 @@
           <td>{{v.language}}</td>
           <td>{{v.typeOfStaff}}</td>
           <td>
-            <button class="btn btn-info btn-sm"><i class="fa fa-edit small"></i></button>
+<!--            -->
+            <button class="btn btn-info btn-sm" onclick="document.getElementById('id01').style.display='block'"
+                    style="width:auto;"><i class="fa fa-edit small"></i></button>
+
+            <div id="id01" class="modal">
+
+              <form [formGroup]="myForm" class="modal-content animate" action="/action_page.php">
+                <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+                </div>
+
+                <div class="containerIS">
+
+                  <label>{{'status' | translate}}</label>
+                  <select class="form-control" formControlName="state" required>
+                    <option value="open">Open</option>
+                    <option value="close">Close</option>
+                    <option value="suspended">Suspended</option>
+                  </select>
+
+                  <label>{{'position' | translate}}</label>
+                  <input type="text" class="form-control" formControlName="position" required>
+
+                  <label>{{'experience' | translate}}</label>
+                  <input class="form-control" type="number" placeholder="Enter name experience"
+                         formControlName="experience">
+
+                  <label>{{'numberOpening' | translate}}</label>
+                  <input class="form-control" type="number" placeholder="Enter number opening"
+                         formControlName="numberOpening" required>
+
+                  <label>{{'department' | translate}}</label>
+                  <input type="text" class="form-control" formControlName="position" required>
+
+                  <label>{{'dateClose' | translate}}</label>
+                  <input type="date" id="dateGetsClosed" name="dateGetsClosed" class="form-control">
+
+                  <label>{{'gender' | translate}}</label> <br>
+                  <select class="form-control" formControlName="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>All</option>
+                  </select>
+
+                  <label>{{'typeOfStaff' | translate}}</label>
+                  <select class="form-control" formControlName="typeOfStaff" required>
+                    <option value="partTime">Part time</option>
+                    <option value="fullTime">Full Time</option>
+                    <option value="partTime">Freelance</option>
+                    <option value="partTime">Intership</option>
+                  </select>
+
+                  <label>{{'offer' | translate}}</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            formControlName="offer" required></textarea>
+
+                  <label>{{'description' | translate}}</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"
+                            formControlName="description" required></textarea>
+
+
+
+
+
+                  <button class="btnSave" (click)="onsubmit()"><i class="fa fa-search"></i> {{'Save' | translate}}
+                  </button>
+
+                </div>
+
+
+              </form>
+            </div>
+
+            <script>
+              // Get the modal
+              var modal = document.getElementById('id01');
+
+              // When the user clicks anywhere outside of the modal, close it
+              window.onclick = function (event) {
+                if (event.target == modal) {
+                  modal.style.display = "none";
+                }
+              }
+            </script>
+<!--            -->
             <button class="btn btn-danger btn-sm"><i class="fa fa-close small"></i></button>
           </td>
 

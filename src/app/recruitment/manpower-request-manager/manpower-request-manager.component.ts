@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MrManage} from "../../model/mrManage";
+import {MrManage} from '../../model/mrManage';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {viewApplicantApprovals} from '../applicant-approval/applicant-approval.component';

@@ -32,10 +32,8 @@ export class AuthenticationService {
    return this.httpClient.get(`${apiRoot}/user`, {headers}).pipe(
       map(
         (userData: User) => {
-          console.log('aaaaaaaaaaaaaaaaa')
-          console.log(userData);
           sessionStorage.setItem('token',
-            btoa(username + ':' + password));
+          btoa(username + ':' + password));
           sessionStorage.setItem('username', username);
           localStorage.setItem('currentUser', JSON.stringify(userData));
           return userData

@@ -6,6 +6,11 @@
   "hrActive": "Hr Active",
   "system": "System",
   "recruitment": "Recruitment",
+  "password": "Password",
+  "usernameRequire":"Username Require",
+  "usernameLong":"Characters must be above 4",
+  "usernameMail":"Please use the account name in the format @",
+  "passRequire":"Password Require",
  
   "ownedBy":"Owned By",
   "reviewApplicant":"Review applicant",

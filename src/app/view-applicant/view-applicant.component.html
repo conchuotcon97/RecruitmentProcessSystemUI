@@ -1,6 +1,6 @@
-<div class="viewApplicant">
+<div class="viewApplicant ">
   <div class="container">
-    <form [formGroup]="myForm">
+    <form [formGroup]="myForm1">
       <table class="tableViewApplicantTop align-middle" align="center">
         <tr>
           <td><label>{{'id' | translate}}</label>
@@ -14,15 +14,16 @@
             <input type="number" class="form-control" formControlName="vacacyNumber"
                    placeholder="Enter vancancy number">
 
-            <label>{{'dateOfApplicant' | translate}}</label>
-            <input type="date" class="form-control" formControlName="dateOfApplicant" placeholder="Enter date applicant">
+            <label>{{'dateOnApplicantVacancy' | translate}}</label>
+            <input type="date" class="form-control" formControlName="dateOfApplicant"
+                   placeholder="Enter date applicant">
           </td>
 
-          <td><label> {{'nameOfTheInterviewer' | translate}}</label>
+          <td><label> {{'listIdUser' | translate}}</label>
             <input type="text" class="form-control" formControlName="nameOfTheInterviewer"
                    placeholder="Enter name of the Interviewer ">
 
-            <label>{{'dateScheduled' | translate}}</label>
+            <label>{{'dateOfTheScheduleInterview' | translate}}</label>
             <input type="date" class="form-control" formControlName="dateScheduled"
                    placeholder="Enter name of the scheduled ">
           </td>
@@ -33,9 +34,11 @@
 
 
     <div class="btnAll">
-      <button class="btnSearch" (click)="onsubmit()"><i class="fa fa-search"></i> {{'btnSearch' | translate}}</button>
-      <button class="btnCreateApp" routerLink="/hr/create-applicant" routerLinkActive="active"><i class="fa fa-plus"></i> {{'btnCreateApp' | translate}}</button>
-      <button class="btnReviewApplicant" routerLink="/interviewer/view-review-applicant" routerLinkActive="active"> {{'btnReviewApplicant' | translate}}</button>
+      <button class="btnSearch" (click)="onsubmit1()"><i class="fa fa-search"></i> {{'btnSearch' | translate}}</button>
+      <button class="btnCreateApp" routerLink="/hr/create-applicant" routerLinkActive="active"><i
+        class="fa fa-plus"></i> {{'btnCreateApp' | translate}}</button>
+      <button class="btnReviewApplicant" routerLink="/interviewer/view-review-applicant"
+              routerLinkActive="active"> {{'btnReviewApplicant' | translate}}</button>
       <button class="btnExport">{{'btnExport' | translate}}</button>
 
     </div>
@@ -43,19 +46,19 @@
   </div>
 
   <div class="viewApplicantBot">
-    <table class="table table-striped">
+    <table class="table table-striped container1">
       <tr>
         <th>{{'id' | translate}}</th>
         <th>{{'name' | translate}}</th>
-        <th>{{'email' | translate}}</th>
+        <th>{{'emailApplicant' | translate}}</th>
         <th>{{'phone' | translate}}</th>
         <th>{{'vacacyNumber' | translate}}</th>
         <th>{{'position' | translate}}</th>
-        <th>{{'dateOfApplicant' | translate}}</th>
+        <th>{{'dateOnApplicantVacancy' | translate}}</th>
         <th>{{'status' | translate}}</th>
         <th>{{'experience' | translate}}</th>
-        <th>{{'nameOfTheInterviewer' | translate}}</th>
-        <th>{{'dateScheduled' | translate}}</th>
+        <th>{{'listIdUser' | translate}}</th>
+        <th>{{'dateOfTheScheduleInterview' | translate}}</th>
         <th>{{'start' | translate}}</th>
         <th>{{'end' | translate}}</th>
 
@@ -80,7 +83,103 @@
           <td>{{c.end}}</td>
           <td>
             <div class="">
-              <button class="btn btn-info btn-sm"><i class="fa fa-edit small"></i></button>
+              <!--              -->
+              <button class="btn btn-info btn-sm" onclick="document.getElementById('id01').style.display='block'"
+                      style="width:auto;"><i class="fa fa-edit small"></i></button>
+
+              <div id="id01" class="modal">
+
+                <form [formGroup]="myForm" class="modal-content animate" action="/action_page.php">
+                  <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+                  </div>
+
+                  <div class="containerIS">
+
+                    <label>{{'id' | translate}}</label>
+                    <input type="number" class="form-control" formControlName="id" placeholder="Enter id applicant">
+
+                    <label>{{'name' | translate}}</label>
+                    <input type="text" class="form-control" formControlName="name" placeholder="Enter name applicant">
+
+                    <label>{{'email' | translate}}</label>
+                    <input type="text" class="form-control" formControlName="email" placeholder="Enter email for you">
+
+                    <label>{{'phone' | translate}}</label>
+                    <input type="number" class="form-control" formControlName="phone" placeholder="Enter phone for you">
+
+                    <label>{{'vacacyNumber' | translate}}</label>
+                    <input type="number" class="form-control" formControlName="vacacyNumber"
+                           placeholder="Enter vacacy number">
+
+                    <label>{{'position' | translate}}</label>
+                    <input type="text" class="form-control" formControlName="position" required>
+                    <!--                  <select class="form-control" formControlName="idPosition" required-->
+                    <!--                          (change)="selectPosition($event.target.value)">-->
+                    <!--                    <option *ngFor="let position of positionList"-->
+                    <!--                            [value]="position.idPosition">{{position.positionName}}</option>-->
+                    <!--                  </select>-->
+
+                    <label>{{'dateOfApplicant' | translate}}</label>
+                    <input type="date" class="form-control" formControlName="dateOfApplicant"
+                           placeholder="Enter date of applicant">
+
+
+                    <label>{{'status' | translate}}</label> <select class="form-control" formControlName="status">
+                    <option value="notinProcess">Notin process</option>
+                    <option value="inprocess">Inprocess</option>
+                    <option value="hired">Hired</option>
+                    <option value="banned">Banned</option>
+                  </select>
+
+                    <label>{{'experience' | translate}}</label>
+                    <input type="number" class="form-control" formControlName="experience"
+                           placeholder="Enter experience">
+                    <!--          <select class="form-control" formControlName="experience">-->
+                    <!--        <option value="fresher">Fresher</option>-->
+                    <!--        <option value="internship">Internship</option>-->
+                    <!--        <option value="senior">Senior</option>-->
+                    <!--      </select>-->
+
+                    <label>{{'nameOfTheInterviewer' | translate}} </label>
+                    <input type="text" class="form-control" formControlName="nameOfTheInterviewer"
+                           placeholder="Enter name interviewer">
+
+
+                    <label>{{'dateScheduled' | translate}}</label>
+                    <input type="date" class="form-control" formControlName="dateScheduled"
+                           placeholder="Enter date scheduled">
+
+                    <label>{{'start' | translate}}</label>
+                    <input type="time" class="form-control" formControlName="start" placeholder="Enter time start">
+
+                    <label>{{'end' | translate}}</label>
+                    <input type="time" class="form-control" formControlName="end" placeholder="Enter time end">
+
+
+                    <button class="btnSave" (click)="onsubmit()"><i class="fa fa-search"></i> {{'Save' | translate}}
+                    </button>
+
+                  </div>
+
+
+                </form>
+              </div>
+
+              <script>
+                // Get the modal
+                var modal = document.getElementById('id01');
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function (event) {
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+                }
+              </script>
+
+              <!---->
               <button class="btn btn-danger btn-sm"><i class="fa fa-close small"></i></button>
             </div>
           </td>

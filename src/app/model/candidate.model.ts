@@ -16,15 +16,15 @@ export class Candidate {
 
   // id: string;
   // name: string;
-  // email: string;
+  // emailApplicant: string;
   // phone: string;
   // vacacyNumber: string;
   // title: string;
-  // dateOfApplicant: any;
+  // dateOnApplicantVacancy: any;
   // status: string;
   // experience: number;
-  // nameOfTheInterviewer: string;
-  // dateScheduled: any;
-  // start: any;
-  // end: any;
+  // listIdUser: string;
+  // dateOfTheScheduleInterview: any;
+  // startTime: any;
+  // endTime: any;
 }

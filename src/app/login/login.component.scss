@@ -42,6 +42,10 @@
 //    align-items: stretch;
 //  }
 //}
+.container1{
+  padding-top: 70px;
+  height: 566px;
+}
 .container{
   th, td {
     text-align: left;
@@ -76,7 +80,7 @@
     cursor: pointer;
     //float: right;'
     width: 100%;
-    margin: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 0px;
   }
 
   .btnCancel:hover, .btnSave:hover {

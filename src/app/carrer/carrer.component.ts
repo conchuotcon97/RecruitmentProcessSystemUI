@@ -70,7 +70,7 @@ export const vacancies = [{
   dateCreated: '20/3/2018',
   ownedBy: 'chi Thuy',
   state: 'opening',
-  position: 'Tuyển Dev font-end',
+  position: 'Tuyển Dev font-endTime',
   description: 'Dịch các tài liệu về kỹ thuật từ tiếng Nhật sang tiếng Việt và từ tiếng Việt sang tiếng Nhật',
   slOpening: 50,
   department: 'IT1',

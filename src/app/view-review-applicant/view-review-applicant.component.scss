@@ -6,7 +6,7 @@
     border-radius: 10px;
     font-size: 14px;
     border: 2px solid gray;
-    //margin-top: 10px;
+    margin-top: 50px;
     //margin-bottom: 15px;
     //margin: 10px 150px 10px 150px;
 
@@ -70,7 +70,13 @@
 
     }
   }
-
+  .table{
+    margin: 3rem 0 2rem 0;
+  }
+  .btn-sm{
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
   .tableViewReviewApplicantBot {
     border-collapse: collapse;
     border-spacing: 0;
@@ -126,25 +132,25 @@
 }
 
 //
-input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=date], [type=time] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+//input[type=text] {
+//  width: 100%;
+//  padding: 12px 20px;
+//  margin: 8px 0;
+//  display: block;
+//  border: 1px solid #ccc;
+//  border-radius: 4px;
+//  box-sizing: border-box;
+//}
+//
+//input[type=date], [type=time] {
+//  width: 100%;
+//  padding: 12px 20px;
+//  margin: 8px 0;
+//  display: block;
+//  border: 1px solid #ccc;
+//  border-radius: 4px;
+//  box-sizing: border-box;
+//}
 
 
 div.container {
@@ -211,9 +217,10 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: -2% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
+  padding: 0 50px;
 }
 
 /* The Close Button (x) */

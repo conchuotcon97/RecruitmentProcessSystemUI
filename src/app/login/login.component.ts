@@ -46,19 +46,19 @@ export class LoginComponent implements OnInit {
 
   checkLogin() {
     this.loginservice.authenticate(this.username.value, this.password.value).subscribe(
-        (data) => {
-          if (data['name']) {
-            this.router.navigate(['/view-vacancy']);
-            this.invalidLogin = false;
-          } else {
-            this.error = 'Username or password invalid';
-          }
-        },
-        error => {
-          this.invalidLogin = true,
-            this.error = error;
+      (data) => {
+        if (data['name']) {
+          this.router.navigate(['/view-vacancy']);
+          this.invalidLogin = false;
+        } else {
+          this.error = 'Username or password invalid';
         }
-      )
+      },
+      error => {
+        this.invalidLogin = true,
+          this.error = error;
+      }
+    )
     ;
   }
 }

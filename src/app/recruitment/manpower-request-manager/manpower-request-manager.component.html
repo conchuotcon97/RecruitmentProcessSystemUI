@@ -76,8 +76,65 @@
           <td>{{v.fromDate}}</td>
           <td>{{v.toDate}}</td>
           <td>
-            <button class="btnEdit"><i class="fa fa-edit"></i></button>
-            <button class="btnDelete"><i class="fa fa-close"></i></button>
+            <!--            -->
+            <button class="btn btn-info btn-sm" onclick="document.getElementById('id01').style.display='block'"
+                    style="width:auto;"><i class="fa fa-edit small"></i></button>
+
+            <div id="id01" class="modal">
+
+              <form [formGroup]="myForm" class="modal-content animate" action="/action_page.php">
+                <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+                </div>
+
+                <div class="containerIS">
+                  <label>{{'idRequiet' | translate}}</label>
+                  <input type="number" class="form-control" formControlName="idRequiet">
+
+                  <label>{{'position' | translate}}</label>
+                  <input type="text" class="form-control" formControlName="position">
+
+                  <label>{{'numberOpening' | translate}}</label>
+                  <input type="number" class="form-control" formControlName="quatity">
+
+                  <label>{{'experience' | translate}}</label>
+                  <input type="number" class="form-control" formControlName="experince">
+
+                  <label>{{'requester' | translate}}</label>
+                  <input type="text" class="form-control" formControlName="requieter">
+
+                  <label>{{'fromDate' | translate}}</label>
+                  <input type="date" class="form-control" formControlName="fromDate">
+
+                  <label>{{'toDate' | translate}}</label>
+                  <input type="date" class="form-control" formControlName="toDate">
+
+
+                  <button class="btnSave" (click)="onsubmit()"><i class="fa fa-search"></i> {{'Save' | translate}}
+                  </button>
+
+                </div>
+
+
+              </form>
+            </div>
+
+            <script>
+              // Get the modal
+              var modal = document.getElementById('id01');
+
+              // When the user clicks anywhere outside of the modal, close it
+              window.onclick = function (event) {
+                if (event.target == modal) {
+                  modal.style.display = "none";
+                }
+              }
+            </script>
+
+            <!---->
+            <!--            -->
+            <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button>
           </td>
         </tr>
       </ng-container>
