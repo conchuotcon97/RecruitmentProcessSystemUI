@@ -1,39 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap, Params} from "@angular/router";
-import {CarrerService} from "../../service/carrer.service";
-// import {Vacancy} from "../../model/vacancy.model";
-import { Location } from '@angular/common';
-import {switchMap} from "rxjs/operators";
-import {__param} from "tslib";
-import {Observable} from "rxjs";
-import {VacancyNhan} from "../../model/vacancyNhan";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, ParamMap, Params} from '@angular/router';
+import {CarrerService} from '../../service/carrer.service';
+// import {Vacancy} from '../../model/vacancy.model';
+import {Location} from '@angular/common';
+import {switchMap} from 'rxjs/operators';
+import {__param} from 'tslib';
+import {Observable} from 'rxjs';
+import {VacancyNhan} from '../../model/vacancyNhan';
+
 @Component({
   selector: 'app-detail-carer',
   templateUrl: './detail-carer.component.html',
   styleUrls: ['./detail-carer.component.scss']
 })
 export class DetailCarerComponent implements OnInit {
-  vacancy :VacancyNhan;
-  constructor(private  route: ActivatedRoute, private carrerService : CarrerService,  private location: Location) {
+  vacancy: VacancyNhan;
+
+  constructor(private  route: ActivatedRoute, private carrerService: CarrerService, private location: Location) {
 
   }
 
   ngOnInit() {
     // this.getVacancyById();
-  //   this.route.paramMap.pipe(
-  //     switchMap((paramssss:ParamMap)=>this.carrerService.getVacancyById(paramssss.get('id')))
-  //   ).subscribe(va=>this.vacancy=va);
-  //
+    //   this.route.paramMap.pipe(
+    //     switchMap((paramssss:ParamMap)=>this.carrerService.getVacancyById(paramssss.get('id')))
+    //   ).subscribe(va=>this.vacancy=va);
+    //
   }
+
   //
   // getVacancyById(){
   //   const id = this.route.snapshot.paramMap.get('id');
   //   console.log(id);
   //   this.carrerService.getVacancyById(id).subscribe(vacan => this.vacancy = vacan);
   // }
-  goBack(){
+  goBack() {
     this.location.back();
   }
+
 //   getVacancyById(){
 // this.route.paramMap.pipe(
 //   switchMap((paramssss:ParamMap)=>this.carrerService.getVacancyById(paramssss.get('id')))

@@ -6,18 +6,18 @@
     <table class="tableCreateAllicant">
       <tr>
         <td>
-          <div class="form-group">
-            <label>{{'status' | translate}}</label>
-            <select class="form-control" formControlName="state" required>
-              <option value="open">Open</option>
-              <option value="close">Close</option>
-              <option value="suspended">Suspended</option>
-            </select>
-            <div class=" form-control-feedback control-label"
-                 *ngIf="state.errors && (state.dirty || state.touched)">
-              <p class="error" *ngIf="state.errors.required">Status is required</p>
-            </div>
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label>{{'status' | translate}}</label>-->
+<!--            <select class="form-control" formControlName="state" required>-->
+<!--              <option value="open">Open</option>-->
+<!--              <option value="close">Close</option>-->
+<!--              <option value="suspended">Suspended</option>-->
+<!--            </select>-->
+<!--            <div class=" form-control-feedback control-label"-->
+<!--                 *ngIf="state.errors && (state.dirty || state.touched)">-->
+<!--              <p class="error" *ngIf="state.errors.required">Status is required</p>-->
+<!--            </div>-->
+<!--          </div>-->
 
           <fieldset formGroupName="position">
             <div class="form-group">
@@ -86,14 +86,14 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label>{{'gender' | translate}}</label> <br>
-            <select class="form-control" formControlName="gender">
-              <option>Male</option>
-              <option>Female</option>
-              <option>All</option>
-            </select>
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label>{{'gender' | translate}}</label> <br>-->
+<!--            <select class="form-control" formControlName="gender">-->
+<!--              <option value="1">Male</option>-->
+<!--              <option value="0">Female</option>-->
+<!--              <option>All</option>-->
+<!--            </select>-->
+<!--          </div>-->
 
 
 
