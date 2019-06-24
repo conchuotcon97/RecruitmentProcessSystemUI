@@ -5,30 +5,30 @@
         <td class="td1" >
           <div class="form-group">
             <label>{{'id' | translate}}</label>
-            <input type="number" class="form-control" formControlName="id" placeholder="Enter id applicant">
+            <input type="number" class="form-control" formControlname="id" placeholder="Enter id applicant">
             <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
               <div *ngIf="id.errors.required">ID applicant required </div></div>
           </div>
 
           <div class="form-group">
-            <label>{{'name' | translate}}</label>
-            <input type="text" class="form-control" formControlName="name" placeholder="Enter name applicant">
-            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-              <div *ngIf="name.errors.required">Name applicant required </div></div>
+            <label>{{'applicantVacancyName' | translate}}</label>
+            <input type="text" class="form-control" formControlname="applicantVacancyName" placeholder="Enter name applicant">
+            <div *ngIf="applicantVacancyName.invalid && (applicantVacancyName.dirty || applicantVacancyName.touched)" class="alert alert-danger">
+              <div *ngIf="applicantVacancyName.errors.required">Name applicant required </div></div>
           </div>
 
           <div class="form-group">
-            <label>{{'email' | translate}}</label>
-            <input type="text" class="form-control" formControlName="email" placeholder="Enter email for you" email="true">
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-              <div *ngIf="id.errors.required">Email required </div>
-              <div *ngIf="email.errors.email"> {{'usernameMail' | translate}}</div>
+            <label>{{'emailApplicant' | translate}}</label>
+            <input type="text" class="form-control" formControlname="emailApplicant" placeholder="Enter emailApplicant for you" emailApplicant="true">
+            <div *ngIf="emailApplicant.invalid && (emailApplicant.dirty || emailApplicant.touched)" class="alert alert-danger">
+              <div *ngIf="id.errors.required">emailApplicant required </div>
+              <div *ngIf="emailApplicant.errors.emailApplicant"> {{'usernamemailApplicant' | translate}}</div>
             </div>
           </div>
 
           <div class="form-group">
             <label>{{'phone' | translate}}</label>
-            <input type="text" class="form-control" formControlName="phone" placeholder="Enter phone for you"  required minlength="10">
+            <input type="text" class="form-control" formControlname="phone" placeholder="Enter phone for you"  required minlength="10">
             <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
                 <div *ngIf="phone.errors.required"> Phone required</div>
                 <div *ngIf="phone.errors.minlength">  Number must be above 10</div>
@@ -37,19 +37,19 @@
 
           <div class="form-group">
             <label>{{'vacacyNumber' | translate}}</label>
-            <input type="number" class="form-control" formControlName="vacacyNumber" placeholder="Enter vacacy number">
+            <input type="number" class="form-control" formControlname="vacacyNumber" placeholder="Enter vacacy number">
             <div *ngIf="vacacyNumber.invalid && (vacacyNumber.dirty || vacacyNumber.touched)" class="alert alert-danger">
               <div *ngIf="vacacyNumber.errors.required">Vacacy Number required </div></div>
           </div>
 
           <div class="form-group">
-            <fieldset formGroupName="position">
+            <fieldset formGroupname="position">
               <div class="form-group">
                 <label>{{'position' | translate}}</label>
-                <select class="form-control" formControlName="idPosition" required>
+                <select class="form-control" formControlname="idPosition" required>
                   <!--                (change)="selectPosition($event.target.value)">-->
                   <option *ngFor="let position of positionList"
-                          [value]="position.idPosition">{{position.positionName}}</option>
+                          [value]="position.idPosition">{{position.positionname}}</option>
                 </select>
                 <div class=" form-control-feedback control-label"
                      *ngIf="idPosition.errors && (idPosition.dirty || idPosition.touched)">
@@ -61,15 +61,15 @@
         </td>
         <td>
           <div class="form-group">
-            <label>{{'dateOfApplicant' | translate}}</label>
-            <input type="date" class="form-control" formControlName="dateOfApplicant"
+            <label>{{'dateOnApplicantVacancy' | translate}}</label>
+            <input type="date" class="form-control" formControlname="dateOnApplicantVacancy"
                    placeholder="Enter date of applicant">
-            <div *ngIf="dateOfApplicant.invalid && (dateOfApplicant.dirty || dateOfApplicant.touched)" class="alert alert-danger">
-              <div *ngIf="dateOfApplicant.errors.required">Date Of Applicant required </div></div>
+            <div *ngIf="dateOnApplicantVacancy.invalid && (dateOnApplicantVacancy.dirty || dateOnApplicantVacancy.touched)" class="alert alert-danger">
+              <div *ngIf="dateOnApplicantVacancy.errors.required">Date Of Applicant required </div></div>
           </div>
 
           <div class="form-group">
-            <label>{{'status' | translate}}</label> <select class="form-control" formControlName="status">
+            <label>{{'status' | translate}}</label> <select class="form-control" formControlname="status">
             <option value="notinProcess">Notin process</option>
             <option value="inprocess">Inprocess</option>
             <option value="hired">Hired</option>
@@ -81,39 +81,39 @@
 
           <div class="form-group">
             <label>{{'experience' | translate}}</label>
-            <input type="number" class="form-control" formControlName="experience"
+            <input type="number" class="form-control" formControlname="experience"
                    placeholder="Enter experience">
             <div *ngIf="experience.invalid && (experience.dirty || experience.touched)" class="alert alert-danger">
               <div *ngIf="experience.errors.required">Experience required </div></div>
           </div>
 
           <div class="form-group">
-            <label>{{'nameOfTheInterviewer' | translate}} </label>
-            <input type="text" class="form-control" formControlName="nameOfTheInterviewer"
+            <label>{{'listIdUser' | translate}} </label>
+            <input type="text" class="form-control" formControlname="listIdUser"
                    placeholder="Enter name interviewer">
-            <div *ngIf="nameOfTheInterviewer.invalid && (nameOfTheInterviewer.dirty || nameOfTheInterviewer.touched)" class="alert alert-danger">
-              <div *ngIf="nameOfTheInterviewer.errors.required">Name Of The Interviewer required </div></div>
+            <div *ngIf="listIdUser.invalid && (listIdUser.dirty || listIdUser.touched)" class="alert alert-danger">
+              <div *ngIf="listIdUser.errors.required">name Of The Interviewer required </div></div>
           </div>
 
           <div class="form-group">
-            <label>{{'dateScheduled' | translate}}</label>
-            <input type="date" class="form-control" formControlName="dateScheduled" placeholder="Enter date scheduled">
-            <div *ngIf="dateScheduled.invalid && (dateScheduled.dirty || dateScheduled.touched)" class="alert alert-danger">
-              <div *ngIf="dateScheduled.errors.required">Date Scheduled required </div></div>
+            <label>{{'dateOfTheScheduleInterview' | translate}}</label>
+            <input type="date" class="form-control" formControlname="dateOfTheScheduleInterview" placeholder="Enter date scheduled">
+            <div *ngIf="dateOfTheScheduleInterview.invalid && (dateOfTheScheduleInterview.dirty || dateOfTheScheduleInterview.touched)" class="alert alert-danger">
+              <div *ngIf="dateOfTheScheduleInterview.errors.required">Date Scheduled required </div></div>
           </div>
 
           <div class="form-group">
-            <label>{{'start' | translate}}</label>
-            <input type="time" class="form-control" formControlName="start" placeholder="Enter time start">
-            <div *ngIf="start.invalid && (start.dirty || start.touched)" class="alert alert-danger">
-              <div *ngIf="start.errors.required">Start time required </div></div>
+            <label>{{'startTime' | translate}}</label>
+            <input type="time" class="form-control" formControlname="start" placeholder="Enter time start">
+            <div *ngIf="startTime.invalid && (startTime.dirty || startTime.touched)" class="alert alert-danger">
+              <div *ngIf="startTime.errors.required">Start time required </div></div>
           </div>
 
           <div class="form-group">
-            <label>{{'end' | translate}}</label>
-            <input type="time" class="form-control" formControlName="end" placeholder="Enter time end">
-            <div *ngIf="end.invalid && (end.dirty || end.touched)" class="alert alert-danger">
-              <div *ngIf="end.errors.required"> End time required </div></div>
+            <label>{{'endTime' | translate}}</label>
+            <input type="time" class="form-control" formControlname="end" placeholder="Enter time end">
+            <div *ngIf="endTime.invalid && (endTime.dirty || endTime.touched)" class="alert alert-danger">
+              <div *ngIf="endTime.errors.required"> End time required </div></div>
           </div>
 
         </td>

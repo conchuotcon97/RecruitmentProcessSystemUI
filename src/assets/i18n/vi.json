@@ -75,6 +75,15 @@
   "toDate": "Đến ngày",
 
   "manpowerRequestListByManager": "Yêu cầu nhân lực từ quản lí",
+  "applicantApproval": "Duyệt yêu cầu",
+
+  "emailApplicant": "Email",
+  "startTime": "Thời gian bắt đầu",
+  "endTime": "Thời gian kết thúc",
+  "dateOfTheScheduleInterview": "Ngày phỏng vấn",
+  "listIdUser": "Tên người phỏng vấn",
+  "dateOnApplicantVacancy": "Ngày nộp đơn",
+  "applicantVacancyName": "Tên ứng viên",
 
 
 

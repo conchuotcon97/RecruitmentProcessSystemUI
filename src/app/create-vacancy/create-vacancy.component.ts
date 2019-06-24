@@ -40,7 +40,7 @@ export class CreateVacancyComponent implements OnInit {
   idDepartment: FormControl;
   idPosition: FormControl;
   positionName: FormControl;
-  requirement:FormControl;
+  requirement: FormControl;
 
   constructor(private carrerService: CarrerService,
               private positionService: PositionService,
@@ -76,7 +76,7 @@ export class CreateVacancyComponent implements OnInit {
     this.departmentName = new FormControl('');
     this.idPosition = new FormControl('');
     this.positionName = new FormControl('');
-    this.requirement= new FormControl('');
+    this.requirement = new FormControl('');
   }
 
 

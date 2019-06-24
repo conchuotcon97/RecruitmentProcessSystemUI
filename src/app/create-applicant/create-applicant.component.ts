@@ -27,7 +27,7 @@ export class CreateApplicantComponent implements OnInit {
   idPosition: FormControl;
   positionName: FormControl;
   dateOnApplicantVacancy: FormControl;
-  state: FormControl;
+  status: FormControl;
   experience: FormControl;
   listIdUser: FormControl;
   dateOfTheScheduleInterview: FormControl;
@@ -73,6 +73,7 @@ export class CreateApplicantComponent implements OnInit {
   onsubmit() {
     console.log(this.myForm.value);
     const body = Object.assign({}, this.myForm.value);
+    // tslint:disable-next-line:max-line-length
     this.httpClient.post(`${apiRoot}/hr/applicantVacancy/${this.getVacancyNumber()}/addApplicantVacancy`, body, this.httpOptions).subscribe(data => {
         console.log(data);
       }
@@ -92,7 +93,7 @@ export class CreateApplicantComponent implements OnInit {
     this.phone = new FormControl('', Validators.required);
     this.vacacyNumber = new FormControl('', Validators.required);
     this.dateOnApplicantVacancy = new FormControl('', Validators.required);
-    this.state = new FormControl('', Validators.required);
+    this.status = new FormControl('', Validators.required);
     this.experience = new FormControl('', Validators.required);
     this.listIdUser = new FormControl('', Validators.required);
     this.dateOfTheScheduleInterview = new FormControl('', Validators.required);
@@ -109,7 +110,7 @@ export class CreateApplicantComponent implements OnInit {
       phone: this.phone,
       vacacyNumber: this.vacacyNumber,
       dateOnApplicantVacancy: this.dateOnApplicantVacancy,
-      state: this.state,
+      status: this.status,
       experience: this.experience,
       listIdUser: this.listIdUser,
       dateOfTheScheduleInterview: this.dateOfTheScheduleInterview,
@@ -120,9 +121,7 @@ export class CreateApplicantComponent implements OnInit {
 
   }
 
-  selectPosition($event)
-    :
-    FormControl {
+  selectPosition($event): FormControl {
     this.getPositionList();
     const id = $event;
     const positionName = this.positionList.find(po => po.idPosition = id).positionName;

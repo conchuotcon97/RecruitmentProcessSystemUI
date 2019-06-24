@@ -25,7 +25,7 @@ export class ViewVacancyComponent implements OnInit {
   submitted = false;
   idVacancy: FormControl;
   ownedBy: FormControl;
-  state: FormControl;
+  status: FormControl;
   position: FormControl;
   dateClose: FormControl;
   typeOfStaff: FormControl;
@@ -75,7 +75,7 @@ export class ViewVacancyComponent implements OnInit {
   createFormControls1() {
     this.idVacancy = new FormControl('', Validators.required);
     this.ownedBy = new FormControl('', Validators.required);
-    this.state = new FormControl('', Validators.required);
+    this.status = new FormControl('', Validators.required);
     this.position = new FormControl('', Validators.required);
     this.dateClose = new FormControl('', Validators.required);
     this.typeOfStaff = new FormControl('', Validators.required);
@@ -85,7 +85,7 @@ export class ViewVacancyComponent implements OnInit {
     this.myForm1 = new FormGroup({
       idVacancy: this.idVacancy,
       ownedBy: this.ownedBy,
-      status: this.state,
+      status: this.status,
       position: this.position,
       dateClose: this.dateClose,
       typeOfStaff: this.typeOfStaff,
@@ -94,7 +94,7 @@ export class ViewVacancyComponent implements OnInit {
   createFormControls() {
     this.idVacancy = new FormControl('', Validators.required);
     this.ownedBy = new FormControl('', Validators.required);
-    this.state = new FormControl('', Validators.required);
+    this.status = new FormControl('', Validators.required);
     this.position = new FormControl('', Validators.required);
     this.dateClose = new FormControl('', Validators.required);
     this.typeOfStaff = new FormControl('', Validators.required);
@@ -124,7 +124,7 @@ export class ViewVacancyComponent implements OnInit {
       // offer: this.offer,
       dateCreated: this.dateCreated,
       dateClose: this.dateClose,
-      state: this.state,
+      status: this.status,
       // experience: this.experience,
       // language: this.language,
       // gender: this.gender,
