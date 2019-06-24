@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {CarrerService} from "../service/carrer.service";
+import {Candidate} from "../model/candidate.model";
+import {Observable} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
+import {User} from "../model/user.model";
+import {InterviewerScheduleI} from "../model/interviewer-scheduleI";
 
 @Component({
   selector: 'app-view-applicant',
@@ -8,7 +14,9 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./view-applicant.component.scss']
 })
 export class ViewApplicantComponent implements OnInit {
-  candicates: Candicate[] = listOfCandidates;
+  map:Map<Candidate,InterviewerScheduleI[]>;
+  candicates: Candidate[];
+  // interviewerScheduleInterview: In
   myForm: FormGroup;
   myForm1: FormGroup;
   apiURL = '';
@@ -26,7 +34,10 @@ export class ViewApplicantComponent implements OnInit {
   startTime: FormControl;
   endTime: FormControl;
 
-  constructor(protected httpClient: HttpClient) {
+  constructor(protected httpClient: HttpClient,
+              protected carrerService: CarrerService,
+              protected route: ActivatedRoute,
+  ) {
   }
 
   ngOnInit() {
@@ -34,6 +45,7 @@ export class ViewApplicantComponent implements OnInit {
     this.createFormControls1();
     this.createForm();
     this.createForm1();
+    this.getApplicantsByIdVacancy();
   }
 
   onsubmit() {
@@ -114,24 +126,33 @@ export class ViewApplicantComponent implements OnInit {
 
   }
 
-}
+  getApplicantsByIdVacancy() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.carrerService.getApplicantsByIdVacancy(id).subscribe(res => {
+      this.map = res, console.log(this.map.keys())
+    });
 
-export class Candicate {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  vacacyNumber: string;
-  position: string;
-  dateOfApplicant: any;
-  status: string;
-  experience: string;
-  nameOfTheInterviewer: string;
-  dateScheduled: any;
-  start: any;
-  end: any;
+  }
+
 
 }
+
+// export class Candicate {
+//   id: string;
+//   name: string;
+//   email: string;
+//   phone: string;
+//   vacacyNumber: string;
+//   position: string;
+//   dateOfApplicant: any;
+//   status: string;
+//   experience: string;
+//   nameOfTheInterviewer: string;
+//   dateScheduled: any;
+//   start: any;
+//   end: any;
+//
+// }
 
 
 export const listOfCandidates = [

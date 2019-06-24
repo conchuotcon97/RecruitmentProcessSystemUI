@@ -145,6 +145,8 @@ export class ViewVacancyComponent implements OnInit {
     // routerLink="hr/create-vacancy/{{v.vacancyNumber}}"
     console.log(v);
   }
+
+
 }
 
 

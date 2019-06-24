@@ -60,7 +60,7 @@
       </tr>
       <ng-container *ngFor="let v of vacancys">
         <tr>
-          <td routerLink="/view-vacancy/{{v.idVacancy}}">{{v.vacancyNumber}}</td>
+          <td routerLink="/view-vacancy/{{v.idVacancy}}/view-applicant">{{v.vacancyNumber}}</td>
           <td>{{v.position.positionName}}</td>
           <td>{{v.department.departmentName}}</td>
           <!--          <td>{{v.requirement}}</td>-->
@@ -78,14 +78,14 @@
           <td>
             <!--            -->
             <button class="btn btn-info btn-sm"
-                    onclick="document.getElementById(${v.idVacancy}).style.display='block'"
+                    onclick="document.getElementById('id01').style.display='block'"
                     style="width:auto;"><i class="fa fa-edit small"></i></button>
 
-            <div id="${v.idVacancy}" class="modal">
+            <div id='id01' class="modal">
 
               <form [formGroup]="myForm" class="modal-content animate" action="/action_page.php">
                 <div class="imgcontainer">
-          <span onclick="document.getElementById(${v.idVacancy}).style.display='none'" class="close"
+          <span onclick="document.getElementById('id01').style.display='none'" class="close"
                 title="Close Modal">&times;</span>
                 </div>
 

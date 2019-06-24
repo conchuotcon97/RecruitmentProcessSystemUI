@@ -36,7 +36,8 @@ const routes: Routes = [
   {path: 'recruitment/manpower-request-manager', component: ManpowerRequestManagerComponent},
   {path: 'recruitment/applicant-approval', component: ApplicantApprovalComponent},
   {path: 'view-vacancy', component: ViewVacancyComponent},
-  {path: 'view-vacancy/:id', component: DetailCarerComponent},
+  {path: 'view-vacancy/:id/view-applicant', component: ViewApplicantComponent},
+  // {path: 'view-vacancy/:id', component: DetailCarerComponent},
 ];
 
 @NgModule({

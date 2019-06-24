@@ -20,7 +20,6 @@ export class CreateApplicantComponent implements OnInit {
   positionList: Position[];
   myForm: FormGroup;
   id: FormControl;
-  positionList: Position[];
   applicantVacancyName: FormControl;
   emailApplicant: FormControl;
   phone: FormControl;
@@ -59,9 +58,7 @@ export class CreateApplicantComponent implements OnInit {
     this.getVacancyNumber();
     this.getListOfInterviewer();
   }
-  getVacancyNumber(): string {
-    return this.route.snapshot.paramMap.get('vacancyNumber');
-  }
+
 
   getPositionList() {
     this.positionService.getAllPosition().subscribe((data: Position[]) => {
@@ -69,9 +66,7 @@ export class CreateApplicantComponent implements OnInit {
     });
   }
 
-  getVacancyNumber()
-    :
-    string {
+  getVacancyNumber(): string {
     return this.route.snapshot.paramMap.get('vacancyNumber');
   }
 

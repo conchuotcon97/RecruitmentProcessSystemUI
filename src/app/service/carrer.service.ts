@@ -5,6 +5,9 @@ import {apiRoot} from '../app.component';
 import {AuthenticationService} from './authentication.service';
 import {Observable} from 'rxjs';
 import {map} from "rxjs/operators";
+import {Candidate} from "../model/candidate.model";
+import {User} from "../model/user.model";
+import {InterviewerScheduleI} from "../model/interviewer-scheduleI";
 
 
 @Injectable()
@@ -36,6 +39,10 @@ export class CarrerService {
 
     return this.httpClient.post(`${apiRoot}/vacancys`, vacancy, {headers: this.headers});
 
+  }
+
+  getApplicantsByIdVacancy(id: number | string): Observable<Map<Candidate,InterviewerScheduleI[]>> {
+    return this.httpClient.get<Map<Candidate,InterviewerScheduleI[]>>(`${apiRoot}/vacancys/`+id+`/applicants`,{headers: this.headers});
   }
 
   // getAllVacancy(){
