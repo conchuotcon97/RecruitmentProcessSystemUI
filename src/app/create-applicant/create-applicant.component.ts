@@ -4,9 +4,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Position} from '../model/position.model';
 import {PositionService} from '../service/position.service';
 import {apiRoot} from '../app.component';
-import {AuthenticationService} from '../service/authentication.service';
-import {ActivatedRoute} from '@angular/router';
-import {User} from '../model/user.model';
+import {AuthenticationService} from "../service/authentication.service";
+import {ActivatedRoute} from "@angular/router";
+import {User} from "../model/user.model";
 
 @Component({
   selector: 'app-create-applicant',
@@ -38,6 +38,7 @@ export class CreateApplicantComponent implements OnInit {
     })
   };
   interviewerList: User[] = [];
+  positionList: Position[] = [];
 
   constructor(protected httpClient: HttpClient, private positionService: PositionService,
               protected  authenticationService: AuthenticationService,
@@ -56,7 +57,7 @@ export class CreateApplicantComponent implements OnInit {
 
   getPositionList() {
     this.positionService.getAllPosition().subscribe((data: Position[]) => {
-      // this.positionList = data;
+      this.positionList = data;
     });
   }
 
@@ -120,25 +121,24 @@ export class CreateApplicantComponent implements OnInit {
 
   }
 
-  // selectPosition($event)
-  //   :
-  //   FormControl {
-  //   this.getPositionList();
-  //   const id = $event;
-  //   const positionName = this.positionList.find(po => po.idPosition = id).positionName;
-  //   this.positionName.setValue(positionName);
-  //   this.idPosition.setValue(Number.parseInt(id));
-  //   return this.positionName;
-  // }
+  selectPosition($event): FormControl {
+    this.getPositionList();
+    const id = $event;
+    const positionName = this.positionList.find(po => po.idPosition = id).positionName;
+    this.positionName.setValue(positionName);
+    this.idPosition.setValue(Number.parseInt(id));
+    return this.positionName;
+  }
 
-    getListOfInterviewer() {
-      return this.httpClient.get(`${apiRoot}/hr/get-list`).subscribe((data: User[]) => {
-        this.interviewerList = data;
-      });
-    }
-
-
+  getListOfInterviewer() {
+    return this.httpClient.get(`${apiRoot}/hr/get-list`).subscribe((data: User[]) => {
+      this.interviewerList = data;
+    });
   }
 
 
+}
 
+export class ApplicantVacancy {
+
+}
