@@ -34,7 +34,9 @@
 
 
     <div class="btnAll">
+
       <button class="btnSearch" (click)="onsubmit1()"><i class="fa fa-search"></i> {{'btnSearch' | translate}}</button>
+
       <button class="btnCreateApp" routerLink="/hr/create-applicant" routerLinkActive="active"><i
         class="fa fa-plus"></i> {{'btnCreateApp' | translate}}</button>
       <button class="btnReviewApplicant" routerLink="/interviewer/view-review-applicant"
@@ -50,40 +52,50 @@
       <tr>
         <th>{{'id' | translate}}</th>
         <th>{{'name' | translate}}</th>
-        <th>{{'emailApplicant' | translate}}</th>
-        <th>{{'phone' | translate}}</th>
-        <th>{{'vacacyNumber' | translate}}</th>
+        <th>{{'email' | translate}}</th>
         <th>{{'position' | translate}}</th>
-        <th>{{'dateOnApplicantVacancy' | translate}}</th>
+        <th>{{'dateOnApplicant' | translate}}</th>
         <th>{{'status' | translate}}</th>
-        <th>{{'experience' | translate}}</th>
-        <th>{{'listIdUser' | translate}}</th>
-        <th>{{'dateOfTheScheduleInterview' | translate}}</th>
-        <th>{{'start' | translate}}</th>
-        <th>{{'end' | translate}}</th>
+        <th>{{'cv' | translate}}</th>
+        <th>{{'dateInterview' | translate}}</th>
+        <th>{{'startTime' | translate}}</th>
+        <th>{{'endTime' | translate}}</th>
+        <th>{{'listInterviewer' | translate}}</th>
 
-        <th>
-
-        </th>
+        <th>Option</th>
       </tr>
-      <ng-container *ngFor="let c of candicates">
+      <!--      <ng-container *ngFor="let c of candicates ">-->
+      <ng-container *ngFor="let item of map|keyvalue">
+        <!--          {{item|json}}-->
         <tr>
-          <td>{{c.id}}</td>
-          <td>{{c.name}}</td>
-          <td>{{c.email}}</td>
-          <td>{{c.phone}}</td>
-          <td>{{c.vacacyNumber}}</td>
-          <td>{{c.position}}</td>
-          <td>{{c.dateOfApplicant}}</td>
-          <td>{{c.status}}</td>
-          <td>{{c.experience}}</td>
-          <td>{{c.nameOfTheInterviewer}}</td>
-          <td>{{c.dateScheduled}}</td>
-          <td>{{c.start}}</td>
-          <td>{{c.end}}</td>
+          <td>{{item.value.applicantNumber}}</td>
+          <td>{{item.value.applicantVacancyName}}</td>
+          <td>{{item.value.emailApplicant}}</td>
+          <td>{{item.value.vacancy.position.positionName}}</td>
+          <td>{{item.value.dateOnApplicantVacancy}}</td>
+          <td>{{item.value.state}}</td>
+          <td>{{item.value.cv}}</td>
+          <td>{{item.value.scheduleInterviewDetails.dateOfTheScheduleInterview}}</td>
+          <td>{{item.value.scheduleInterviewDetails.startTime}}</td>
+          <td>{{item.value.scheduleInterviewDetails.endTime}}</td>
+          <!--          <td>{{c.applicantVacancyName}}</td>-->
+          <!--          <td>{{c.emailApplicant}}</td>-->
+          <!--          <td>{{c.vacancy.position.positionName}}</td>-->
+          <!--          <td>{{c.dateOnApplicantVacancy}}</td>-->
+          <!--          <td>{{c.state}}</td>-->
+          <!--          <td>{{c.cv}}</td>-->
+          <!--          <td>{{c.scheduleInterviewDetails.dateOfTheScheduleInterview}}</td>-->
+          <!--          <td>{{c.scheduleInterviewDetails.startTime}}</td>-->
+          <!--          <td>{{c.scheduleInterviewDetails.endTime}}</td>-->
+          <td *ngFor="let it of item.key">
+            <li>{{it}}</li>
+          </td>
+
           <td>
+
+
             <div class="">
-              <!--              -->
+
               <button class="btn btn-info btn-sm" onclick="document.getElementById('id01').style.display='block'"
                       style="width:auto;"><i class="fa fa-edit small"></i></button>
 
@@ -104,7 +116,8 @@
                     <input type="text" class="form-control" formControlName="name" placeholder="Enter name applicant">
 
                     <label>{{'email' | translate}}</label>
-                    <input type="text" class="form-control" formControlName="email" placeholder="Enter email for you">
+                    <input type="email" class="form-control" formControlName="emailApplicant"
+                           placeholder="Enter email for you">
 
                     <label>{{'phone' | translate}}</label>
                     <input type="number" class="form-control" formControlName="phone" placeholder="Enter phone for you">
@@ -113,14 +126,14 @@
                     <input type="number" class="form-control" formControlName="vacacyNumber"
                            placeholder="Enter vacacy number">
 
-                    <label>{{'position' | translate}}</label>
-                    <input type="text" class="form-control" formControlName="position" required>
-                    <!--                  <select class="form-control" formControlName="idPosition" required-->
-                    <!--                          (change)="selectPosition($event.target.value)">-->
-                    <!--                    <option *ngFor="let position of positionList"-->
-                    <!--                            [value]="position.idPosition">{{position.positionName}}</option>-->
-                    <!--                  </select>-->
-
+                    <!-- <label>{{'position' | translate}}</label>
+                     <input type="text" class="form-control" formControlName="position" required>
+                                   <select class="form-control" formControlName="idPosition" required
+                                               (change)="selectPosition($event.target.value)">
+                                         <option *ngFor="let position of positionList"
+                                                 [value]="position.idPosition">{{position.positionName}}</option>
+                                       </select>
+ -->
                     <label>{{'dateOfApplicant' | translate}}</label>
                     <input type="date" class="form-control" formControlName="dateOfApplicant"
                            placeholder="Enter date of applicant">
@@ -136,11 +149,7 @@
                     <label>{{'experience' | translate}}</label>
                     <input type="number" class="form-control" formControlName="experience"
                            placeholder="Enter experience">
-                    <!--          <select class="form-control" formControlName="experience">-->
-                    <!--        <option value="fresher">Fresher</option>-->
-                    <!--        <option value="internship">Internship</option>-->
-                    <!--        <option value="senior">Senior</option>-->
-                    <!--      </select>-->
+
 
                     <label>{{'nameOfTheInterviewer' | translate}} </label>
                     <input type="text" class="form-control" formControlName="nameOfTheInterviewer"
@@ -152,10 +161,10 @@
                            placeholder="Enter date scheduled">
 
                     <label>{{'start' | translate}}</label>
-                    <input type="time" class="form-control" formControlName="start" placeholder="Enter time start">
+                    <input type="time" class="form-control" formControlName="startTime" placeholder="Enter time start">
 
                     <label>{{'end' | translate}}</label>
-                    <input type="time" class="form-control" formControlName="end" placeholder="Enter time end">
+                    <input type="time" class="form-control" formControlName="endTime" placeholder="Enter time end">
 
 
                     <button class="btnSave" (click)="onsubmit()"><i class="fa fa-search"></i> {{'Save' | translate}}
@@ -179,12 +188,13 @@
                 }
               </script>
 
-              <!---->
+
               <button class="btn btn-danger btn-sm"><i class="fa fa-close small"></i></button>
             </div>
           </td>
         </tr>
       </ng-container>
+      <!--      </ng-container>-->
     </table>
     <div class="phan-trang">
       <a href="#">&laquo;</a>

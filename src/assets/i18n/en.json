@@ -26,15 +26,16 @@
   "name": "Applicant name",
   "position": "Position",
   "vacacyNumber": "Vacancy Number",
-  "dateOfApplicant": "Date of applicant",
+  "dateOnApplicant": "Date on applicant",
   "nameOfTheInterviewer": "Name of the Interviewer",
-  "dateScheduled": "The date of the scheduled interview",
+  "dateInterview": "Date interview",
   "email": "Email",
   "phone": "Phone",
   "status": "Status",
   "experience": "Experience",
   "start": "Start",
   "end": "End",
+  "listInterviewer": "Interviewer",
 
   "idVacancy": "ID vacancy",
   "ownedBy": "Owned By",
@@ -49,6 +50,7 @@
   "language": "Language",
   "gender": "Gender",
   "degree": "Degree/Certificate",
+  "vacancyNumber": "Vacancy Number",
 
 
 
@@ -76,6 +78,17 @@
   "toDate": "To date",
 
   "manpowerRequestListByManager": "Manpower Request List By Manager",
+  "applicantApproval": "Applicant Approval",
+
+
+  "emailApplicant": "Email",
+  "startTime": "Start time",
+  "endTime": "End time",
+  "dateOfTheScheduleInterview": "The date of the scheduled interview",
+  "listIdUser": "Name of the Interviewer",
+  "dateOnApplicantVacancy": "Date of applicant",
+  "applicantVacancyName": "Applicant Vacancy Name",
+
 
 
 

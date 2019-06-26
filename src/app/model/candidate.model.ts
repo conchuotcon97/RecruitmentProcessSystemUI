@@ -6,7 +6,7 @@ export class Candidate {
 
   applicantNumber: string;
   applicantVacancyName: string;
-
+  emailApplicant: string;
   vacancy: VacancyNhan;
   dateOnApplicantVacancy: string;
   state: string;

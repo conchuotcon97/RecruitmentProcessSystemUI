@@ -36,6 +36,7 @@ export class CreateVacancyComponent implements OnInit {
   idDepartment: FormControl;
   idPosition: FormControl;
   positionName: FormControl;
+  requirement: FormControl;
 
   constructor(private carrerService: CarrerService,
               private positionService: PositionService,
@@ -62,23 +63,27 @@ export class CreateVacancyComponent implements OnInit {
     this.description = new FormControl('', Validators.required);
     this.experience = new FormControl('', Validators.required);
     this.idDepartment = new FormControl(Number, Validators.required);
+    // this.gender = new FormControl('', Validators.required);
     this.typeOfStaff = new FormControl('', Validators.required);
     this.offer = new FormControl('', Validators.required);
     this.position = new FormControl('');
     this.departmentName = new FormControl('');
     this.idPosition = new FormControl('');
     this.positionName = new FormControl('');
+    this.requirement = new FormControl('');
   }
 
 
   createForm() {
     this.myForm = new FormGroup({
+      requirement: this.requirement,
       numberOpening: this.numberOpening,
       dateClose: this.dateClose,
       description: this.description,
+      // degree: this.degree,
       experience: this.experience,
       offer: this.offer,
-      gender: this.gender,
+      // gender: this.gender,
       typeOfStaff: this.typeOfStaff,
       department: new FormGroup({
         departmentName: this.departmentName,
@@ -132,14 +137,8 @@ export class CreateVacancyComponent implements OnInit {
   }
 
   onsubmit() {
-    console.log('log thu' + this.myForm.value);
-    if (this.myForm.valid) {
-      const result: VacancyNhan = Object.assign({}, this.myForm.value);
-      console.log(result);
-      this.carrerService.createVacancy(result).subscribe(data => this.vacancys.push(data));
-      // console.log(this.myForm.value);
-      this.myForm.reset();
-    }
-
+   this.carrerService.createVacancy(this.myForm.value).subscribe();
+    console.log(this.myForm.value);
+    this.myForm.reset();
   }
 }

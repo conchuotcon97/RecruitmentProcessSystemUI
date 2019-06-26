@@ -20,21 +20,19 @@ export class AuthGuard implements CanActivate {
     const currentUser = this.authenticationService.getCurrentUserValue();
     if (currentUser.authenticated) {
       let set = new Set();
-      currentUser.authorities.forEach((authority:any)=>{
+      currentUser.authorities.forEach((authority: any) => {
         set.add(authority.authority);
       });
-      route.data.roles.valueOf().forEach(role=>{
+      route.data.roles.valueOf().forEach(role => {
         set.add(role);
       });
       console.log(set);
-      if(set.size < currentUser.authorities.length + route.data.roles.length){
+      if (set.size < currentUser.authorities.length + route.data.roles.length) {
         return true;
       }
     }
   }
 }
-
-
 
 
 // not logged in so redirect to login page with the return url

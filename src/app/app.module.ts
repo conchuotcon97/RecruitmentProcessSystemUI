@@ -34,6 +34,7 @@ import {TranslatePipe} from './pipe/translate.pipe';
 import {TranslateService} from './service/translate.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthGuard} from './service/auth.guard';
+import {DetailCarerComponent} from "./view-vacancy/detail-carrer/detail-carer.component";
 
 // import { ViewVacancyComponent } from './view-vacancy/view-vacancy.component';
 export function setupTranslateFactory(
@@ -55,7 +56,7 @@ export function setupTranslateFactory(
     ViewApplicantComponent,
     CarrerComponent,
     ReviewApplicantComponent,
-    // DetailCarerComponent,
+    DetailCarerComponent,
     // SystemComponent,
     ChangedPasswordComponent,
     ProfileComponent,

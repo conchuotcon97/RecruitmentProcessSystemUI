@@ -1,39 +1,40 @@
 <div class="viewVacancy">
   <div class="container">
     <form [formGroup]="myForm">
-    <table class="tableViewVacancyTop align-middle" align="center">
+      <table class="tableViewVacancyTop align-middle" align="center">
 
-      <tr>
-        <td><label>{{'idVacancy' | translate}}</label>
-          <input type="number" class="form-control" formControlName="idVacancy">
+        <tr>
+          <!--          <td><label>{{'vacancyNumber' | translate}}</label>-->
+          <!--            <input type="number" class="form-control" formControlName="vacancyNumber">-->
 
-          <label>{{'ownedBy' | translate}}</label>
-          <input type="text" class="form-control" formControlName="ownedBy"></td>
+          <!--          <label>{{'ownedBy' | translate}}</label>-->
+          <!--          <input type="text" class="form-control" formControlName="ownedBy"></td>-->
 
-        <td><label>{{'status' | translate}}</label> <select class="form-control" formControlName="status">
-          <option value="open">Open</option>
-          <option value="close">Close</option>
-          <option value="suspended">Suspended</option>
-        </select>
+          <td><label>{{'status' | translate}}</label> <select class="form-control" formControlName="status">
+            <option value="open">Open</option>
+            <option value="close">Close</option>
+            <option value="suspended">Suspended</option>
+          </select>
 
-          <label>{{'position' | translate}}</label>
-          <input type="text" class="form-control" formControlName="position"></td>
+            <label>{{'position' | translate}}</label>
+            <input type="text" class="form-control" formControlName="position"></td>
 
-        <td><label>{{'dateClose' | translate}}</label>
-          <input type="date" class="form-control" formControlName="dateClose">
+          <td><label>{{'dateClose' | translate}}</label>
+            <input type="date" class="form-control" formControlName="dateClose">
 
-          <label>{{'typeOfStaff' | translate}}</label> <select class="form-control" formControlName="typeOfStaff">
-            <option value="partTime">Part time</option>
-            <option value="fullTime">Full Time</option>
-            <option value="partTime">Freelance</option>
-            <option value="partTime">Intership</option>
-          </select></td>
-      </tr>
-    </table>
+            <label>{{'typeOfStaff' | translate}}</label> <select class="form-control" formControlName="typeOfStaff">
+              <option value="partTime">Part time</option>
+              <option value="fullTime">Full Time</option>
+              <option value="partTime">Freelance</option>
+              <option value="partTime">Intership</option>
+            </select></td>
+        </tr>
+      </table>
     </form>
     <div class="btnAll">
       <button class="btnSearch" (click)="onsubmit1()"><i class="fa fa-search"></i> {{'btnSearch' | translate}}</button>
-      <button class="btnCreateVacancy"><i class="fa fa-plus"></i> {{'btnCreateVacancy' | translate}}</button>
+      <button routerLink="/hr/create-vacancy" class="btnCreateVacancy"><i
+        class="fa fa-plus"></i> {{'btnCreateVacancy' | translate}}</button>
       <button class="btnExport">{{'btnExport' | translate}}</button>
     </div>
   </div>
@@ -41,44 +42,46 @@
     <table class="table table-striped container1">
       <tr>
         <th>{{'idVacancy' | translate}}</th>
-        <th>{{'dateCreated' | translate}}</th>
-        <th>{{'ownedBy' | translate}}</th>
-        <th>{{'status' | translate}}</th>
         <th>{{'position' | translate}}</th>
-        <th>{{'description' | translate}}</th>
-        <th>{{'numberOpening' | translate}}</th>
         <th>{{'department' | translate}}</th>
-        <th>{{'dateClose' | translate}}</th>
-        <th>{{'requirement' | translate}}</th>
-        <th>{{'offer' | translate}}</th>
-        <th>{{'experience' | translate}}</th>
-        <th>{{'language' | translate}}</th>
+        <!--        <th>{{'requirement' | translate}}</th>-->
+        <!--        <th>{{'description' | translate}}</th>-->
         <th>{{'typeOfStaff' | translate}}</th>
+        <th>{{'ownedBy' | translate}}</th>
+        <th>{{'numberOpening' | translate}}</th>
+        <th>{{'vacancyNumber' | translate}}</th>
+        <th>{{'dateCreated' | translate}}</th>
+        <th>{{'dateClose' | translate}}</th>
+        <th>{{'status' | translate}}</th>
+        <!--        <th>{{'offer' | translate}}</th>-->
+        <!--        <th>{{'experience' | translate}}</th>-->
+        <!--        <th>{{'language' | translate}}</th>-->
         <th></th>
       </tr>
       <ng-container *ngFor="let v of vacancys">
         <tr>
-          <td>{{v.idVacancy}}</td>
+          <td routerLink="/view-vacancy/{{v.idVacancy}}/view-applicant">{{v.vacancyNumber}}</td>
+          <td>{{v.position.positionName}}</td>
+          <td>{{v.department.departmentName}}</td>
+          <!--          <td>{{v.requirement}}</td>-->
+          <!--          <td>{{v.description}}</td>-->
+          <td>{{v.typeOfStaff}}</td>
+          <td>{{v.ownedBy}}</td>
+          <td>{{v.numberOpening}}</td>
+          <td>{{v.vacancyNumber}}</td>
           <td>{{v.dateCreated}}</td>
 
-          <td>{{v.ownedBy}}</td>
-          <td>{{v.state}}</td>
-          <td>{{v.position.positionName}}</td>
-          <td>{{v.description}}</td>
-          <td>{{v.numberOpening}}</td>
-          <td>{{v.department.departmentName}}</td>
           <td>{{v.dateClose}}</td>
-          <td>{{v.requirement}}</td>
-          <td>{{v.offer}}</td>
-          <td>{{v.experience}}</td>
-          <td>{{v.language}}</td>
-          <td>{{v.typeOfStaff}}</td>
+          <td>{{v.state}}</td>
+          <!--          <td>{{v.experience}}</td>-->
+          <!--          <td>{{v.language}}</td>-->
           <td>
-<!--            -->
-            <button class="btn btn-info btn-sm" onclick="document.getElementById('id01').style.display='block'"
+            <!--            -->
+            <button class="btn btn-info btn-sm"
+                    onclick="document.getElementById('id01').style.display='block'"
                     style="width:auto;"><i class="fa fa-edit small"></i></button>
 
-            <div id="id01" class="modal">
+            <div id='id01' class="modal">
 
               <form [formGroup]="myForm" class="modal-content animate" action="/action_page.php">
                 <div class="imgcontainer">
@@ -89,7 +92,7 @@
                 <div class="containerIS">
 
                   <label>{{'status' | translate}}</label>
-                  <select class="form-control" formControlName="state" required>
+                  <select class="form-control" formControlName="status" required>
                     <option value="open">Open</option>
                     <option value="close">Close</option>
                     <option value="suspended">Suspended</option>
@@ -98,9 +101,9 @@
                   <label>{{'position' | translate}}</label>
                   <input type="text" class="form-control" formControlName="position" required>
 
-                  <label>{{'experience' | translate}}</label>
-                  <input class="form-control" type="number" placeholder="Enter name experience"
-                         formControlName="experience">
+                  <!--                  <label>{{'experience' | translate}}</label>-->
+                  <!--                  <input class="form-control" type="number" placeholder="Enter name experience"-->
+                  <!--                         formControlName="experience">-->
 
                   <label>{{'numberOpening' | translate}}</label>
                   <input class="form-control" type="number" placeholder="Enter number opening"
@@ -112,12 +115,12 @@
                   <label>{{'dateClose' | translate}}</label>
                   <input type="date" id="dateGetsClosed" name="dateGetsClosed" class="form-control">
 
-                  <label>{{'gender' | translate}}</label> <br>
-                  <select class="form-control" formControlName="gender">
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>All</option>
-                  </select>
+                  <!--                  <label>{{'gender' | translate}}</label> <br>-->
+                  <!--                  <select class="form-control" formControlName="gender">-->
+                  <!--                    <option>Male</option>-->
+                  <!--                    <option>Female</option>-->
+                  <!--                    <option>All</option>-->
+                  <!--                  </select>-->
 
                   <label>{{'typeOfStaff' | translate}}</label>
                   <select class="form-control" formControlName="typeOfStaff" required>
@@ -127,16 +130,13 @@
                     <option value="partTime">Intership</option>
                   </select>
 
-                  <label>{{'offer' | translate}}</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            formControlName="offer" required></textarea>
+                  <!--                  <label>{{'offer' | translate}}</label>-->
+                  <!--                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"-->
+                  <!--                            formControlName="offer" required></textarea>-->
 
                   <label>{{'description' | translate}}</label>
                   <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"
                             formControlName="description" required></textarea>
-
-
-
 
 
                   <button class="btnSave" (click)="onsubmit()"><i class="fa fa-search"></i> {{'Save' | translate}}
@@ -159,7 +159,7 @@
                 }
               }
             </script>
-<!--            -->
+            <!--            -->
             <button class="btn btn-danger btn-sm"><i class="fa fa-close small"></i></button>
           </td>
 

@@ -1,6 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {CarrerService} from '../service/carrer.service';
+import {Candidate} from '../model/candidate.model';
+import {Observable} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../model/user.model';
+import {InterviewerScheduleI} from '../model/interviewer-scheduleI';
+import {PositionService} from '../service/position.service';
+import {CandidateService} from '../service/candidate.service';
 
 @Component({
   selector: 'app-view-applicant',
@@ -8,13 +16,14 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./view-applicant.component.scss']
 })
 export class ViewApplicantComponent implements OnInit {
-  candicates: Candicate[] = listOfCandidates;
+  map = new Map<string[], Candidate>();
+  candicates: Candidate[];
   myForm: FormGroup;
   myForm1: FormGroup;
   apiURL = '';
   id: FormControl;
   name: FormControl;
-  email: FormControl;
+  emailApplicant: FormControl;
   phone: FormControl;
   vacacyNumber: FormControl;
   position: FormControl;
@@ -23,10 +32,19 @@ export class ViewApplicantComponent implements OnInit {
   experience: FormControl;
   nameOfTheInterviewer: FormControl;
   dateScheduled: FormControl;
-  start: FormControl;
-  end: FormControl;
+  startTime: FormControl;
+  endTime: FormControl;
+  positionList = this.positionService.getAllPosition();
 
-  constructor(protected httpClient: HttpClient) {
+  constructor(protected httpClient: HttpClient,
+              protected candidateService: CandidateService,
+              protected route: ActivatedRoute,
+              protected  positionService: PositionService,
+  ) {
+    // this.map.forEach((value: InterviewerScheduleI[], key: Candidate) => {
+    //   console.log(key, value);
+    // });
+
   }
 
   ngOnInit() {
@@ -34,6 +52,7 @@ export class ViewApplicantComponent implements OnInit {
     this.createFormControls1();
     this.createForm();
     this.createForm1();
+    this.getApplicantsByIdVacancy();
   }
 
   onsubmit() {
@@ -80,7 +99,7 @@ export class ViewApplicantComponent implements OnInit {
   createFormControls() {
     this.id = new FormControl('', Validators.required);
     this.name = new FormControl('', Validators.required);
-    this.email = new FormControl('', Validators.required);
+    this.emailApplicant = new FormControl('', Validators.required);
     this.phone = new FormControl('', Validators.required);
     this.vacacyNumber = new FormControl('', Validators.required);
     this.position = new FormControl('', Validators.required);
@@ -90,8 +109,8 @@ export class ViewApplicantComponent implements OnInit {
     this.experience = new FormControl('', Validators.required);
     this.nameOfTheInterviewer = new FormControl('', Validators.required);
     this.dateScheduled = new FormControl('', Validators.required);
-    this.start = new FormControl('', Validators.required);
-    this.end = new FormControl('', Validators.required);
+    this.startTime = new FormControl('', Validators.required);
+    this.endTime = new FormControl('', Validators.required);
     // this.positionName = new FormControl('');
   }
 
@@ -99,7 +118,7 @@ export class ViewApplicantComponent implements OnInit {
     this.myForm = new FormGroup({
       id: this.id,
       name: this.name,
-      email: this.email,
+      emailApplicant: this.emailApplicant,
       phone: this.phone,
       vacacyNumber: this.vacacyNumber,
       position: this.position,
@@ -108,37 +127,55 @@ export class ViewApplicantComponent implements OnInit {
       experience: this.experience,
       nameOfTheInterviewer: this.nameOfTheInterviewer,
       dateScheduled: this.dateScheduled,
-      start: this.start,
-      end: this.end,
+      startTime: this.startTime,
+      endTime: this.endTime,
     });
 
   }
 
+  getApplicantsByIdVacancy() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.candidateService.getApplicantsByIdVacancy(id).subscribe(resList => {
+      this.map = resList[0],
+        this.candicates = resList[1];
+    });
+  }
+
+
+  getKeys(map) {
+    return Array.from(map.keys());
+  }
+
+  getValues(map) {
+    return Array.from(map.values());
+  }
+
+
 }
 
-export class Candicate {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  vacacyNumber: string;
-  position: string;
-  dateOfApplicant: any;
-  status: string;
-  experience: string;
-  nameOfTheInterviewer: string;
-  dateScheduled: any;
-  start: any;
-  end: any;
-
-}
+// export class Candicate {
+//   id: string;
+//   name: string;
+//   email: string;
+//   phone: string;
+//   vacacyNumber: string;
+//   position: string;
+//   dateOfApplicant: any;
+//   status: string;
+//   experience: string;
+//   nameOfTheInterviewer: string;
+//   dateScheduled: any;
+//   start: any;
+//   end: any;
+//
+// }
 
 
 export const listOfCandidates = [
   {
     id: '15130147',
     name: 'Phuong',
-    email: '...@gmail.com',
+    emailApplicant: '...@gmail.com',
     phone: '093205304',
     vacacyNumber: 'V001',
     position: 'AI',
@@ -147,13 +184,13 @@ export const listOfCandidates = [
     experience: 'Junior',
     nameOfTheInterviewer: 'Ho Chi Minh',
     dateScheduled: '18-7-2019',
-    start: '11:00 AM',
-    end: '11:30 AM'
+    startTime: '11:00 AM',
+    endTime: '11:30 AM'
   },
   {
     id: '15130125',
     name: 'Nhan',
-    email: '...@gmail.com',
+    emailApplicant: '...@gmail.com',
     phone: '093205304',
     vacacyNumber: 'V001',
     position: 'AI',
@@ -162,7 +199,7 @@ export const listOfCandidates = [
     experience: 'Junior',
     nameOfTheInterviewer: 'Ho Chi Minh',
     dateScheduled: '18-7-2019',
-    start: '11:00 AM',
-    end: '11:30 AM'
+    startTime: '11:00 AM',
+    endTime: '11:30 AM'
   }
 ];

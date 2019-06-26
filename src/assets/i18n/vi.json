@@ -27,15 +27,16 @@
   "name": "Tên ứng viên",
   "position": "Chức vụ",
   "vacacyNumber": "Mã vị trí ứng tuyển",
-  "dateOfApplicant": "Ngày nộp đơn",
+  "dateOnApplicant": "Ngày nộp đơn",
   "nameOfTheInterviewer": "Tên người phỏng vấn",
-  "dateScheduled": "Ngày phỏng vấn",
+  "dateInterview": "Ngày phỏng vấn",
   "email": "Email",
   "phone": "Số điện thoại",
   "status": "Trạng thái",
   "experience": "Kinh nghiệm",
   "start": "Thời gian bắt đầu",
   "end": "Thời gian kết thúc",
+  "listInterviewer": "Người phỏng vấn",
 
   "idVacancy": "Mã vị trí ứng tuyển",
   "ownedBy": "Người phỏng vấn",
@@ -48,6 +49,7 @@
   "requirement": "Yêu cầu",
   "offer": "Đề nghị",
   "language": "Ngôn ngữ",
+  "vacancyNumber": "Số chỗ trống",
 
   "applicantNumber": "Mã ứng viên",
   "positionRecommend": "Vị trí phù hợp",
@@ -73,6 +75,15 @@
   "toDate": "Đến ngày",
 
   "manpowerRequestListByManager": "Yêu cầu nhân lực từ quản lí",
+  "applicantApproval": "Duyệt yêu cầu",
+
+  "emailApplicant": "Email",
+  "startTime": "Thời gian bắt đầu",
+  "endTime": "Thời gian kết thúc",
+  "dateOfTheScheduleInterview": "Ngày phỏng vấn",
+  "listIdUser": "Tên người phỏng vấn",
+  "dateOnApplicantVacancy": "Ngày nộp đơn",
+  "applicantVacancyName": "Tên ứng viên",
 
 
 

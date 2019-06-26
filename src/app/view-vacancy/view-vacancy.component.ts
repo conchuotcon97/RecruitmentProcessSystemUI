@@ -112,23 +112,23 @@ export class ViewVacancyComponent implements OnInit {
   }
   createForm() {
     this.myForm = new FormGroup({
-      idVacancy: this.idVacancy,
-      ownedBy: this.ownedBy,
-      status: this.status,
-      position: this.position,
-      dateClose: this.dateClose,
-      typeOfStaff: this.typeOfStaff,
-      numberOpening: this.numberOpening,
-      offer: this.offer,
       vacancyNumber: this.vacancyNumber,
-      dateCreated: this.dateCreated,
-      description: this.description,
+      position: this.position,
       department: this.department,
       requirement: this.requirement,
-      experience: this.experience,
-      language: this.language,
-      gender: this.gender,
-      degree: this.degree,
+      description: this.description,
+      typeOfStaff: this.typeOfStaff,
+      // idVacancy: this.idVacancy,
+      ownedBy: this.ownedBy,
+      numberOpening: this.numberOpening,
+      // offer: this.offer,
+      dateCreated: this.dateCreated,
+      dateClose: this.dateClose,
+      status: this.status,
+      // experience: this.experience,
+      // language: this.language,
+      // gender: this.gender,
+      // degree: this.degree,
     });
   }
 
@@ -145,6 +145,8 @@ export class ViewVacancyComponent implements OnInit {
     // routerLink="hr/create-vacancy/{{v.vacancyNumber}}"
     console.log(v);
   }
+
+
 }
 
 

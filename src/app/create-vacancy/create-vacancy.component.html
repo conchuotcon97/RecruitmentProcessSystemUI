@@ -54,6 +54,19 @@
               <p class="error" *ngIf="numberOpening.errors.required">Number opening is required</p>
             </div>
           </div>
+
+          <div class="form-group"
+               [ngClass]="offer.invalid && (offer.dirty || offer.touched) ? 'has-danger' : 'has-success' ">
+            <label>{{'offer' | translate}}</label>
+            <input class="form-control" type="text" placeholder="Enter offer"
+                   formControlName="offer" required>
+            <div class=" form-control-feedback control-label"
+                 *ngIf="offer.errors && (offer.dirty || offer.touched)">
+              <p class="error" *ngIf="offer.errors.required">Offer is required</p>
+            </div>
+          </div>
+
+
         </td>
         <td>
 
@@ -88,8 +101,8 @@
 <!--          <div class="form-group">-->
 <!--            <label>{{'gender' | translate}}</label> <br>-->
 <!--            <select class="form-control" formControlName="gender">-->
-<!--              <option value="1">Male</option>-->
-<!--              <option value="0">Female</option>-->
+<!--              <option>Male</option>-->
+<!--              <option>Female</option>-->
 <!--              <option>All</option>-->
 <!--            </select>-->
 <!--          </div>-->
@@ -117,13 +130,13 @@
       <tr>
         <td>
           <div class="form-group"
-               [ngClass]="offer.invalid && (offer.dirty || offer.touched) ? 'has-danger' : 'has-success' ">
-            <label>{{'offer' | translate}}</label>
+               [ngClass]="requirement.invalid && (requirement.dirty || requirement.touched) ? 'has-danger' : 'has-success' ">
+            <label>{{'requirement' | translate}}</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                      formControlName="offer" required></textarea>
+                      formControlName="requirement" required></textarea>
             <div class=" form-control-feedback control-label"
                  *ngIf="offer.errors && (offer.dirty || offer.touched)">
-              <p class="error" *ngIf="offer.errors.required">Offer is required</p>
+              <p class="error" *ngIf="requirement.errors.required">Requirement is required</p>
             </div>
           </div>
         </td>
@@ -142,7 +155,7 @@
         </td>
       </tr>
     </table>
-    <button class="btnSave" (click)="onsubmit()">{{'save' | translate}}</button>
+    <button class="btnSave" (click)="onsubmit()"><i class="fa fa-save"></i> {{'save' | translate}}</button>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
   </form>
 </div>

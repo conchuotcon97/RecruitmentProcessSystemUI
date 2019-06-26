@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Params} from '@angular/router';
-import {CarrerService} from '../../service/carrer.service';
-// import {Vacancy} from '../../model/vacancy.model';
+import {ActivatedRoute, ParamMap, Params} from "@angular/router";
 import {Location} from '@angular/common';
-import {switchMap} from 'rxjs/operators';
-import {__param} from 'tslib';
-import {Observable} from 'rxjs';
-import {VacancyNhan} from '../../model/vacancyNhan';
+import {switchMap} from "rxjs/operators";
+import {__param} from "tslib";
+import {Observable} from "rxjs";
+import {VacancyNhan} from "../../model/vacancyNhan";
+import {CarrerService} from "../../service/carrer.service";
 
 @Component({
   selector: 'app-detail-carer',
@@ -21,7 +20,7 @@ export class DetailCarerComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getVacancyById();
+    this.getVacancyById();
     //   this.route.paramMap.pipe(
     //     switchMap((paramssss:ParamMap)=>this.carrerService.getVacancyById(paramssss.get('id')))
     //   ).subscribe(va=>this.vacancy=va);
@@ -29,11 +28,11 @@ export class DetailCarerComponent implements OnInit {
   }
 
   //
-  // getVacancyById(){
-  //   const id = this.route.snapshot.paramMap.get('id');
-  //   console.log(id);
-  //   this.carrerService.getVacancyById(id).subscribe(vacan => this.vacancy = vacan);
-  // }
+  getVacancyById(){
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    this.carrerService.getVacancyById(id).subscribe(vacan => this.vacancy = vacan);
+  }
   goBack() {
     this.location.back();
   }

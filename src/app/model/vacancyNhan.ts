@@ -8,7 +8,7 @@ export class VacancyNhan {
   public idVacancy: number;
   public offer: string;
   public vacancyNumber: string;
-  public dateCreated: Date = new Date(Date.now());
+  public dateCreated: Date ;
   ownedBy: User;
 
   position: Position;
@@ -16,12 +16,11 @@ export class VacancyNhan {
   public description: string;
 
   department: Department;
-  public dateClose: Date = new Date(Date.now());
+  public dateClose: Date ;
   public requirement: string;
 
   public experience: number;
   public language: string;
-  public gender: boolean;
   public degree: string;
   public typeOfStaff: string;
 
