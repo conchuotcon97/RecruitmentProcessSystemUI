@@ -1,7 +1,22 @@
-.header{
-  margin-top: 0;
-  padding: 0;
+//.header{
+//  margin-top: 0;
+//  padding: 0;
+//}
+//.header img {
+//  width: 100%;
+//}
+.site-branding-area{
+  background-color: #effffd;
 }
-.header img {
-  width: 100%;
+.logo h1 {
+  width: 1000px;
+  font-size: 40px;
+  margin: 40px 0;font-weight: 400;
+}
+.logo h1 a {
+  color: #999;
+}
+.logo h1 a:hover {text-decoration: none;opacity: .7}
+.logo h1 a span {
+  color: #1abc9c;
 }

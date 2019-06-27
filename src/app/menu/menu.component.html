@@ -1,54 +1,56 @@
-<nav class="navbar navbar-expand-lg">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/view-applicant">{{'viewApplicant' | translate}}<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/view-vacancy">{{'viewVacancy' | translate}}</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{'interviewActive' | translate}}
-        </a>
-        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-     
-          <a class="dropdo.0wn-item drop" routerLink="/interviewer/review-applicant">{{'reviewApplicant'|translate}}</a>
-          <a class="dropdown-item drop" routerLink="/interviewer/view-review-applicant">{{'viewReviewApplicant' | translate}}</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown" >
-        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{'hrActive' | translate}}
-        </a>
-        <div class="dropdown-menu " aria-labelledby="navbarDropdown" >
-          <a class="dropdown-item drop" routerLink="/hr/create-vacancy">Create vacancy</a>
-          <a class="dropdown-item drop" routerLink='hr/create-applicant/:vacancyNumber'>Create applicant</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{'system' | translate}}
-        </a>
-        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-          <a class="dropdown-item drop" routerLink="system/changed-password">change Password</a>
-          <a class="dropdown-item drop" routerLink="system/profile">Profile</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{'recruitment' | translate}}
-        </a>
-        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-          <a class="dropdown-item drop" routerLink="recruitment/manpower-request">Create vacancy</a>
-          <a class="dropdown-item drop" routerLink="recruitment/manpower-request-manager">Manpower request list by manager</a>
-          <a class="dropdown-item drop" routerLink="recruitment/applicant-approval">Applicant approval</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+<!--Old2-->
+<!--<nav class="navbar navbar-expand-lg">-->
+<!--  <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--    <ul class="navbar-nav mr-auto">-->
+<!--      <li class="nav-item active">-->
+<!--        <a class="nav-link" routerLink="/view-applicant">{{'viewApplicant' | translate}}<span class="sr-only">(current)</span></a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/view-vacancy">{{'viewVacancy' | translate}}</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item dropdown">-->
+<!--        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          {{'interviewActive' | translate}}-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu " aria-labelledby="navbarDropdown">-->
+<!--     -->
+<!--          <a class="dropdo.0wn-item drop" routerLink="/interviewer/review-applicant">{{'reviewApplicant'|translate}}</a>-->
+<!--          <a class="dropdown-item drop" routerLink="/interviewer/view-review-applicant">{{'viewReviewApplicant' | translate}}</a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <li class="nav-item dropdown" >-->
+<!--        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          {{'hrActive' | translate}}-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu " aria-labelledby="navbarDropdown" >-->
+<!--          <a class="dropdown-item drop" routerLink="/hr/create-vacancy">Create vacancy</a>-->
+<!--          <a class="dropdown-item drop" routerLink='hr/create-applicant/:vacancyNumber'>Create applicant</a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <li class="nav-item dropdown">-->
+<!--        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          {{'system' | translate}}-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu " aria-labelledby="navbarDropdown">-->
+<!--          <a class="dropdown-item drop" routerLink="system/changed-password">change Password</a>-->
+<!--          <a class="dropdown-item drop" routerLink="system/profile">Profile</a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <li class="nav-item dropdown">-->
+<!--        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          {{'recruitment' | translate}}-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu " aria-labelledby="navbarDropdown">-->
+<!--          <a class="dropdown-item drop" routerLink="recruitment/manpower-request">Create vacancy</a>-->
+<!--          <a class="dropdown-item drop" routerLink="recruitment/manpower-request-manager">Manpower request list by manager</a>-->
+<!--          <a class="dropdown-item drop" routerLink="recruitment/applicant-approval">Applicant approval</a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</nav>-->
 
+<!--Old1-->
 <!--<div class="navbar">-->
 <!--<a routerLink="/view-applicant">View Applicants</a>-->
 <!--<a routerLink="/view-vacancy">View Vacancy</a>-->
@@ -95,3 +97,89 @@
 <!--</div>-->
 <!--</div>-->
 <!--</div>-->
+
+<!--New 1.0-->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="w3-bar w3-black w3-card">
+  <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)"
+     onclick="myFunction()" title="Toggle Navigation Menu">
+    <i class="fa fa-bars"></i>
+  </a>
+
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button">{{'applicant' | translate}}
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <a class="w3-bar-item w3-button" routerLink="/view-applicant">{{'viewApplicant' | translate}}</a>
+      <a class="w3-bar-item w3-button"
+         routerLink='hr/create-applicant/:vacancyNumber'>{{'createApplicant' | translate}}</a>
+    </div>
+  </div>
+
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button">{{'vacancy' | translate}}
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <a class="w3-bar-item w3-button" routerLink="/view-vacancy">{{'viewVacancy' | translate}}</a>
+      <a class="dropdown-item drop" routerLink="hr/create-vacancy">{{'createVacancy' | translate}}</a>
+    </div>
+  </div>
+
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button">{{'review' | translate}}
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <a class="w3-bar-item w3-button" routerLink="/interviewer/review-applicant">{{'reviewApplicant'|translate}}</a>
+      <a class="dropdown-item drop"
+         routerLink="/interviewer/view-review-applicant">{{'viewReviewApplicant' | translate}}</a>
+    </div>
+  </div>
+
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button"> {{'recruitment' | translate}}
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <a class="w3-bar-item w3-button" routerLink="recruitment/manpower-request-manager">Manpower request list by
+        manager
+      </a>
+      <a class="dropdown-item drop" routerLink="recruitment/applicant-approval">Applicant approval</a>
+    </div>
+  </div>
+
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button"> {{'system' | translate}}
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <a class="w3-bar-item w3-button" routerLink="system/changed-password">{{'changePass' | translate}}</a>
+      <a class="dropdown-item drop" routerLink="system/profile">{{'profile' | translate}}</a>
+    </div>
+  </div>
+</div>
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">{{'applicant' | translate}}</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">{{'vacancy' | translate}}</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">{{'Review' | translate}}</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">{{'recruitment' | translate}}</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">{{'system' | translate}}</a>
+</div>
+<script>
+
+
+  // Used to toggle the menu on small screens when clicking on the menu button
+  function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+</script>
