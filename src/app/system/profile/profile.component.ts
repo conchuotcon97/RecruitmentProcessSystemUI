@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {User} from '../../model/user.model';
+import {UserService} from '../../service/user.service';
+import {apiRoot} from '../../app.component';
+import {Department} from '../../model/department.model';
+import {Position} from '../../model/position.model';
+import {AuthenticationService} from '../../service/authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,58 +14,89 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  profileInf: User;
   myForm: FormGroup;
-  apiURL = '';
   userNumber: FormControl;
   fullName: FormControl;
-  userName: FormControl;
+  username: FormControl;
   birthday: FormControl;
   gender: FormControl;
   address: FormControl;
   email: FormControl;
   phone: FormControl;
-  namePosition: FormControl;
-  nameDepartment: FormControl;
-  constructor(protected httpClient: HttpClient) {
+  idPosition: FormControl;
+  idDepartment: FormControl;
+  position: Position;
+  department: Department;
+  positionName: FormControl;
+  departmentName: FormControl;
+
+  constructor(protected httpClient: HttpClient,
+              protected userService: UserService,
+              protected authenticationService: AuthenticationService,
+              protected fBuild: FormBuilder) {
   }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
+    // this.createFormControls();
+    // this.createForm();
+    this.getProfile();
+
+  }
+
+  getProfile() {
+    this.userService.getProfileUser().subscribe(res => this.profileInf = res);
+  }
+
+  updateProfile(user: User) {
+    this.userService.updateProfile(user.idUser);
   }
 
   onsubmit() {
     if (this.myForm.valid) {
       console.log(this.myForm.value);
-      this.httpClient.post(`${this.apiURL}/v00.acacyavhbjnk/`, this.myForm.value);
+      const id = this.authenticationService.getCurrentUserValue().idUser;
+      this.myForm.valueChanges.subscribe(data => this.updateProfile(data));
       this.myForm.reset();
     }
   }
+
+
   createFormControls() {
-    this.userNumber = new FormControl('', Validators.required);
-    this.fullName = new FormControl('', Validators.required);
-    this.userName = new FormControl('', Validators.required);
-    this.birthday = new FormControl('', Validators.required);
-    this.gender = new FormControl('', Validators.required);
-    this.address = new FormControl('', Validators.required);
-    this.email = new FormControl('', Validators.required);
-    this.phone = new FormControl('', Validators.required);
-    this.namePosition = new FormControl('', Validators.required);
-    this.nameDepartment = new FormControl('', Validators.required);
+    this.userNumber = new FormControl(`${this.profileInf.userNumber}`, Validators.required);
+    this.fullName = new FormControl(`${this.profileInf.fullName}`, Validators.required);
+    this.username = new FormControl(`${this.profileInf.username}`, Validators.required);
+    this.birthday = new FormControl(`${this.profileInf.birthday}`, Validators.required);
+    this.gender = new FormControl(`${this.profileInf.gender}`, Validators.required);
+    this.address = new FormControl(`${this.profileInf.address}`, Validators.required);
+    this.email = new FormControl(`${this.profileInf.email}`, Validators.required);
+    this.phone = new FormControl(`${this.profileInf.phone}`, Validators.required);
+    this.positionName = new FormControl(`${this.profileInf.position.positionName}`, Validators.required);
+    this.departmentName = new FormControl(`${this.profileInf.department.departmentName}`, Validators.required);
+    this.idPosition = new FormControl(`${this.profileInf.position.idPosition}`, Validators.required);
+    this.idDepartment = new FormControl(`${this.profileInf.department.idDepartment}`, Validators.required);
 
   }
+
   createForm() {
     this.myForm = new FormGroup({
       userNumber: this.userNumber,
       fullName: this.fullName,
-      userName: this.userName,
+      username: this.username,
       birthday: this.birthday,
       gender: this.gender,
       address: this.address,
       email: this.email,
       phone: this.phone,
-      namePosition: this.namePosition,
-      nameDepartment: this.nameDepartment,
+      position: new FormGroup({
+        idPosition: this.idPosition,
+        positionName: this.positionName
+      }),
+      department: new FormGroup({
+        idDepartment: this.idDepartment,
+        departmentName: this.departmentName
+      }),
     });
   }
+
 }

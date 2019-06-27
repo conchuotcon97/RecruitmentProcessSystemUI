@@ -17,7 +17,6 @@ export class ApplicantVacancy {
   styleUrls: ['./create-applicant.component.scss']
 })
 export class CreateApplicantComponent implements OnInit {
-  positionList: Position[];
   myForm: FormGroup;
   id: FormControl;
   applicantVacancyName: FormControl;
@@ -43,6 +42,7 @@ export class CreateApplicantComponent implements OnInit {
   };
   applicants;
   interviewerList: User[] = [];
+  positionList: Position[] = [];
 
   constructor(protected httpClient: HttpClient, private positionService: PositionService,
               protected  authenticationService: AuthenticationService,

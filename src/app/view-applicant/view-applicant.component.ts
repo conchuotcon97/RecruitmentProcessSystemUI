@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import {CarrerService} from "../service/carrer.service";
-import {Candidate} from "../model/candidate.model";
-import {Observable} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
-import {User} from "../model/user.model";
-import {InterviewerScheduleI} from "../model/interviewer-scheduleI";
+import {CarrerService} from '../service/carrer.service';
+import {Candidate} from '../model/candidate.model';
+import {Observable} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../model/user.model';
+import {InterviewerScheduleI} from '../model/interviewer-scheduleI';
+import {PositionService} from '../service/position.service';
+import {CandidateService} from '../service/candidate.service';
 
 @Component({
   selector: 'app-view-applicant',
@@ -14,9 +16,8 @@ import {InterviewerScheduleI} from "../model/interviewer-scheduleI";
   styleUrls: ['./view-applicant.component.scss']
 })
 export class ViewApplicantComponent implements OnInit {
-  map:Map<Candidate,InterviewerScheduleI[]>;
+  map = new Map<string[], Candidate>();
   candicates: Candidate[];
-  // interviewerScheduleInterview: In
   myForm: FormGroup;
   myForm1: FormGroup;
   apiURL = '';
@@ -33,11 +34,17 @@ export class ViewApplicantComponent implements OnInit {
   dateScheduled: FormControl;
   startTime: FormControl;
   endTime: FormControl;
+  positionList = this.positionService.getAllPosition();
 
   constructor(protected httpClient: HttpClient,
-              protected carrerService: CarrerService,
+              protected candidateService: CandidateService,
               protected route: ActivatedRoute,
+              protected  positionService: PositionService,
   ) {
+    // this.map.forEach((value: InterviewerScheduleI[], key: Candidate) => {
+    //   console.log(key, value);
+    // });
+
   }
 
   ngOnInit() {
@@ -128,10 +135,19 @@ export class ViewApplicantComponent implements OnInit {
 
   getApplicantsByIdVacancy() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.carrerService.getApplicantsByIdVacancy(id).subscribe(res => {
-      this.map = res, console.log(this.map.keys())
+    this.candidateService.getApplicantsByIdVacancy(id).subscribe(resList => {
+      this.map = resList[0],
+        this.candicates = resList[1];
     });
+  }
 
+
+  getKeys(map) {
+    return Array.from(map.keys());
+  }
+
+  getValues(map) {
+    return Array.from(map.values());
   }
 
 
