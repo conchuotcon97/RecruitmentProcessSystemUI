@@ -89,6 +89,14 @@
   "dateOnApplicantVacancy": "Date of applicant",
   "applicantVacancyName": "Applicant Vacancy Name",
 
+  "applicant": "Applicant",
+  "vacancy": "Vacancy",
+  "review": "Review",
+  "createApplicant": "Create Applicant",
+  "createVacancy": "Create Vacancy",
+  "changePass": "Change Pass",
+  "profile": "Profile",
+
 
 
 

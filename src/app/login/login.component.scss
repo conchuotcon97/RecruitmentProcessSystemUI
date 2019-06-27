@@ -42,17 +42,16 @@
 //    align-items: stretch;
 //  }
 //}
-.container1{
+
+.container{
   padding-top: 70px;
   height: 566px;
-}
-.container{
-  th, td {
-    text-align: left;
-    padding: 16px;
-    border: 0px solid black;
-    border-collapse: collapse;
-  }
+  //th, td {
+  //  text-align: left;
+  //  padding: 16px;
+  //  border: 0px solid black;
+  //  border-collapse: collapse;
+  //}
 
   tr:nth-child(even) {
     background-color: #f2f2f2

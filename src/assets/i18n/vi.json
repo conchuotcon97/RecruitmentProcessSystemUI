@@ -85,6 +85,14 @@
   "dateOnApplicantVacancy": "Ngày nộp đơn",
   "applicantVacancyName": "Tên ứng viên",
 
+  "applicant": "Ứng viên",
+  "vacancy": "Vị trí ứng tuyển",
+  "review": "Đánh giá",
+  "createApplicant": "Tạo ứng viên",
+  "createVacancy": "Tạo vị trí ",
+  "changePass": "Đổi mật khẩu",
+  "profile": "Thông tin cá nhân",
+
 
 
   "btnSearch": "Tìm kiếm",
