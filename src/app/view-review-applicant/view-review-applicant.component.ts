@@ -6,6 +6,7 @@ import {Position} from '../model/position.model';
 import {PositionService} from '../service/position.service';
 import {CreateVacancyComponent} from '../create-vacancy/create-vacancy.component';
 import {Department} from '../model/department.model';
+import {ReviewService} from "../service/review.service";
 
 @Component({
   selector: 'app-view-review-applicant',
@@ -13,7 +14,7 @@ import {Department} from '../model/department.model';
   styleUrls: ['./view-review-applicant.component.scss']
 })
 export class ViewReviewApplicantComponent implements OnInit {
-  viewReviewApplicant: Review[] = viewReviewApplicant;
+  viewReviewApplicant: Review[] ;
   myForm: FormGroup;
   myForm1: FormGroup;
   apiURL = '';
@@ -33,7 +34,9 @@ export class ViewReviewApplicantComponent implements OnInit {
   // idPosition: FormControl;
   // positionName: FormControl;
 
-  constructor(private positionService: PositionService, protected httpClient: HttpClient) {
+  constructor(private positionService: PositionService, protected httpClient: HttpClient,
+              protected  reviewService: ReviewService,
+  ) {
   }
 
   ngOnInit() {
@@ -41,6 +44,7 @@ export class ViewReviewApplicantComponent implements OnInit {
     this.createFormControls1();
     this.createForm();
     this.createForm1();
+    this.getAllReview();
   }
 
   onsubmit() {
@@ -130,27 +134,32 @@ export class ViewReviewApplicantComponent implements OnInit {
     // openDiaLog() {
     //
   }
+  getAllReview() {
+    this.reviewService.getAllReview().subscribe((data: Review[]) => {
+      this.viewReviewApplicant = data
+    });
+  }
 }
 
-export const viewReviewApplicant = [
-  {
-    applicantNumber: 15130125,
-    position: 'Tuyển Dev font-endTime',
-    positionRecommend: 'Font-End',
-    technicalReview: '7/10',
-    behaviorReview: '7/10',
-    languageReview: 'Java, Angular',
-    result: 'pass',
-    note: 'Lương 1000$'
-  },
-  {
-    applicantNumber: 15130147,
-    position: 'Tuyển Dev back-endTime',
-    positionRecommend: 'Back-End',
-    technicalReview: '4/10',
-    behaviorReview: '7/10',
-    languageReview: 'Java, DataBase',
-    result: 'pass',
-    note: 'Lương 1500$'
-  }
-];
+// export const viewReviewApplicant = [
+//   {
+//     applicantNumber: 15130125,
+//     position: 'Tuyển Dev font-endTime',
+//     positionRecommend: 'Font-End',
+//     technicalReview: '7/10',
+//     behaviorReview: '7/10',
+//     languageReview: 'Java, Angular',
+//     result: 'pass',
+//     note: 'Lương 1000$'
+//   },
+//   {
+//     applicantNumber: 15130147,
+//     position: 'Tuyển Dev back-endTime',
+//     positionRecommend: 'Back-End',
+//     technicalReview: '4/10',
+//     behaviorReview: '7/10',
+//     languageReview: 'Java, DataBase',
+//     result: 'pass',
+//     note: 'Lương 1500$'
+//   }
+// ];

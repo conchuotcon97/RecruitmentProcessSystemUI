@@ -66,7 +66,7 @@
       </tr>
       <!--      <ng-container *ngFor="let c of candicates ">-->
       <ng-container *ngFor="let item of map|keyvalue">
-        <!--          {{item|json}}-->
+<!--                  {{item|json}}-->
         <tr>
           <td>{{item.value.applicantNumber}}</td>
           <td>{{item.value.applicantVacancyName}}</td>
@@ -87,8 +87,8 @@
           <!--          <td>{{c.scheduleInterviewDetails.dateOfTheScheduleInterview}}</td>-->
           <!--          <td>{{c.scheduleInterviewDetails.startTime}}</td>-->
           <!--          <td>{{c.scheduleInterviewDetails.endTime}}</td>-->
-          <td *ngFor="let it of item.key">
-            <li>{{it}}</li>
+          <td>{{item.key}}
+<!--            <li>{{it}}</li>-->
           </td>
 
           <td>

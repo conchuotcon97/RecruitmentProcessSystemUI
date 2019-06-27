@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {ReviewService} from "../service/review.service";
+import {Review} from "../model/review";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-review-applicant',
@@ -8,27 +11,31 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./review-applicant.component.scss']
 })
 export class ReviewApplicantComponent implements OnInit {
-
+  reviews: Review[];
   myForm: FormGroup;
   apiURL = '';
   // exps: string[] = ['Fresher', 'Internship', 'Senior'];
   results: string[] = ['Pass', 'Fail', 'Consider'];
   applicantNumber: FormControl;
   position: FormControl;
-   positionRecommend: FormControl;
-   technicalReview: FormControl;
-   behaviorReview: FormControl;
-   languageReview: FormControl;
-   result: FormControl;
-   note: FormControl;
+  positionRecommend: FormControl;
+  technicalReview: FormControl;
+  behaviorReview: FormControl;
+  languageReview: FormControl;
+  result: FormControl;
+  note: FormControl;
 
-  constructor(protected httpClient: HttpClient) {
+  constructor(protected httpClient: HttpClient,
+              protected  reviewService: ReviewService,
+              protected route: ActivatedRoute,
+  ) {
   }
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
   }
+
   onsubmit() {
     if (this.myForm.valid) {
       console.log(this.myForm.value);
@@ -62,4 +69,16 @@ export class ReviewApplicantComponent implements OnInit {
       note: this.note
     });
   }
+
+
+
+  addReview() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.reviewService.addReview(id).subscribe(res => {
+      console.log(res);
+      this.myForm.reset();
+
+    });
+  }
+
 }

@@ -32,4 +32,8 @@ export class CandidateService {
     const applicants = this.httpClient.get(`${apiRoot}/vacancys/` + id + `/applicants`, {headers: this.headers});
     return forkJoin([map, applicants]);
   }
+
+  getAllApplicants():Observable<Map<string[],Candidate>>{
+    return this.httpClient.get<Map<string[],Candidate>>(`${apiRoot}/applicants` , {headers: this.headers});
+  }
 }

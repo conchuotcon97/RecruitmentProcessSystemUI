@@ -52,7 +52,16 @@ export class ViewApplicantComponent implements OnInit {
     this.createFormControls1();
     this.createForm();
     this.createForm1();
-    this.getApplicantsByIdVacancy();
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (this.id ) {
+      console.log("id nek  "+id);
+      this.getApplicantsByIdVacancy();
+
+    } else {
+
+      this.getAllApplicant();
+    }
   }
 
   onsubmit() {
@@ -142,64 +151,18 @@ export class ViewApplicantComponent implements OnInit {
   }
 
 
-  getKeys(map) {
-    return Array.from(map.keys());
+  getKeys() {
+    return Array.from(this.map.keys());
   }
 
   getValues(map) {
     return Array.from(map.values());
   }
 
-
+  getAllApplicant() {
+    this.candidateService.getAllApplicants().subscribe(data => this.map = data);
+  }
 }
 
-// export class Candicate {
-//   id: string;
-//   name: string;
-//   email: string;
-//   phone: string;
-//   vacacyNumber: string;
-//   position: string;
-//   dateOfApplicant: any;
-//   status: string;
-//   experience: string;
-//   nameOfTheInterviewer: string;
-//   dateScheduled: any;
-//   start: any;
-//   end: any;
-//
-// }
 
 
-export const listOfCandidates = [
-  {
-    id: '15130147',
-    name: 'Phuong',
-    emailApplicant: '...@gmail.com',
-    phone: '093205304',
-    vacacyNumber: 'V001',
-    position: 'AI',
-    dateOfApplicant: '8-7-2019',
-    status: 'Processing',
-    experience: 'Junior',
-    nameOfTheInterviewer: 'Ho Chi Minh',
-    dateScheduled: '18-7-2019',
-    startTime: '11:00 AM',
-    endTime: '11:30 AM'
-  },
-  {
-    id: '15130125',
-    name: 'Nhan',
-    emailApplicant: '...@gmail.com',
-    phone: '093205304',
-    vacacyNumber: 'V001',
-    position: 'AI',
-    dateOfApplicant: '8-7-2019',
-    status: 'Processing',
-    experience: 'Junior',
-    nameOfTheInterviewer: 'Ho Chi Minh',
-    dateScheduled: '18-7-2019',
-    startTime: '11:00 AM',
-    endTime: '11:30 AM'
-  }
-];
