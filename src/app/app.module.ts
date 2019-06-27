@@ -35,6 +35,8 @@ import {TranslateService} from './service/translate.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthGuard} from './service/auth.guard';
 import {DetailCarerComponent} from "./view-vacancy/detail-carrer/detail-carer.component";
+import {ReviewService} from "./service/review.service";
+import {CandidateService} from "./service/candidate.service";
 
 // import { ViewVacancyComponent } from './view-vacancy/view-vacancy.component';
 export function setupTranslateFactory(
@@ -86,6 +88,8 @@ export function setupTranslateFactory(
     AuthenticationService,
     TranslateService,
     AuthGuard ,
+    ReviewService,
+    CandidateService,
 
     {
       provide: APP_INITIALIZER,

@@ -26,8 +26,8 @@ const routes: Routes = [
     component: ViewApplicantComponent
   },
   {path: 'view-vacancy', component: ViewVacancyComponent},
-  {path: 'hr/create-applicant/:vacancyNumber', component: CreateApplicantComponent},
-  {path: 'hr/create-vacancy', component: CreateVacancyComponent},
+  // {path: 'create-applicant/:vacancyNumber', component: CreateApplicantComponent},
+  {path: 'view-vacancy/:id/view-applicant/create-applicant', component: CreateApplicantComponent},
   {path: 'interviewer/review-applicant', component: ReviewApplicantComponent},
   {path: 'interviewer/view-review-applicant', component: ViewReviewApplicantComponent},
   {path: 'system/profile', component: ProfileComponent},

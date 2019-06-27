@@ -84,10 +84,10 @@
   "emailApplicant": "Email",
   "startTime": "Start time",
   "endTime": "End time",
-  "dateOfTheScheduleInterview": "The date of the scheduled interview",
+  "dateOfTheScheduleInterview": "Date interview",
   "listIdUser": "Name of the Interviewer",
-  "dateOnApplicantVacancy": "Date of applicant",
-  "applicantVacancyName": "Applicant Vacancy Name",
+  "dateOnApplicantVacancy": "Date on applicant",
+  "candidateName": "Candidate Name",
 
   "applicant": "Applicant",
   "vacancy": "Vacancy",
