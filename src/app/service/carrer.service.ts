@@ -35,9 +35,9 @@ export class CarrerService {
   }
 
   createVacancy(vacancy: VacancyNhan) {
-    // let body = JSON.parse(JSON.stringify(vacancy));
+    let body = JSON.parse(JSON.stringify(vacancy));
 
-    return this.httpClient.post(`${apiRoot}/vacancys`, vacancy, {headers: this.headers});
+    return this.httpClient.post<VacancyNhan>(`${apiRoot}/vacancys`, body, {headers: this.headers});
 
   }
 
@@ -50,14 +50,9 @@ export class CarrerService {
   //   return of(vacancies.find(vacancy => vacancy.idVacancy == id));
   //
   // }
-  // getVacancyById(idVacancy: string): Observable<Vacancy>{
-  //    let httpHeaders= new HttpHeaders().set('Accept','application/json');
-  //
-  // return this.httpClient.get<Vacancy>(this.apiRoot+'?idVacancy='+idVacancy,{headers:httpHeaders,responseType:'json'});
-  getVacancyById(idVacancy: number | string) {
-    return this.getAllVacancy().pipe(
-      map((vacancys: VacancyNhan[]) => vacancys.find(vacancy => vacancy.idVacancy === +idVacancy))
-    );
+  getVacancyById(idVacancy: number| string): Observable<VacancyNhan>{
+
+  return this.httpClient.get<VacancyNhan>(apiRoot+'/vacancys/'+idVacancy,{headers:this.headers});
 
   }
 

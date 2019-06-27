@@ -22,10 +22,6 @@ export class CandidateService {
   }
 
 
-  // getApplicantsByIdVacancy(id: number | string): Observable<Map<Candidate, InterviewerScheduleI[]>> {
-  // tslint:disable-next-line:max-line-length
-  //   return this.httpClient.get<Map<Candidate, InterviewerScheduleI[]>>(`${apiRoot}/vacancys/` + id + `/applicants`, {headers: this.headers});
-  // }
 
   getApplicantsByIdVacancy(id: number | string): Observable<any[]> {
     const map = this.httpClient.get(`${apiRoot}/vacancys/` + id + `/applicants/appISI`, {headers: this.headers});
@@ -36,4 +32,5 @@ export class CandidateService {
   getAllApplicants():Observable<Map<string[],Candidate>>{
     return this.httpClient.get<Map<string[],Candidate>>(`${apiRoot}/applicants` , {headers: this.headers});
   }
+  // addApplicantOfVacancy():Observable<App>
 }

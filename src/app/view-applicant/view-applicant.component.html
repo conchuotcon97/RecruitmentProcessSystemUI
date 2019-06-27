@@ -37,7 +37,7 @@
 
       <button class="btnSearch" (click)="onsubmit1()"><i class="fa fa-search"></i> {{'btnSearch' | translate}}</button>
 
-      <button class="btnCreateApp" routerLink="/view-vacancy/{{id}}/view-applicant/create-applicant"
+      <button class="btnCreateApp" routerLink="/create-applicant/{{this.idVacancy}}"
               routerLinkActive="active"><i
         class="fa fa-plus"></i> {{'btnCreateApp' | translate}}</button>
       <button class="btnReviewApplicant" routerLink="/interviewer/view-review-applicant"

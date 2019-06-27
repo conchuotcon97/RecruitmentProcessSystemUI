@@ -7,6 +7,8 @@ import {apiRoot} from '../app.component';
 import {AuthenticationService} from '../service/authentication.service';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../model/user.model';
+import {CarrerService} from "../service/carrer.service";
+import {VacancyNhan} from "../model/vacancyNhan";
 
 export class ApplicantVacancy {
 }
@@ -30,6 +32,9 @@ export class CreateApplicantComponent implements OnInit {
   startTime: FormControl;
   endTime: FormControl;
   cv: FormControl;
+  vacancy: VacancyNhan;
+  vacancyNumbers: string;
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -42,43 +47,46 @@ export class CreateApplicantComponent implements OnInit {
 
   constructor(protected httpClient: HttpClient, protected positionService: PositionService,
               protected  authenticationService: AuthenticationService,
-              protected  route: ActivatedRoute
+              protected  route: ActivatedRoute,
+              protected vacancyService: CarrerService,
   ) {
   }
 
   ngOnInit() {
     console.log(this.authenticationService.getToken());
+    console.log(this.route.snapshot.paramMap.get('id'));
     this.createFormControls();
     this.createForm();
+    this.getVacancy();
     // this.getListOfInterviewer();
   }
 
 
-
-  getVacancyNumber(): string {
-    return this.route.snapshot.paramMap.get('vacancyNumber');
+  getVacancy() {
+    const idVacancy = this.route.snapshot.paramMap.get('idVacancy');
+    console.log("idVacancy tao applicant"+ idVacancy);
+    this.vacancyService.getVacancyById(idVacancy).subscribe(res => {
+      this.vacancy = res, console.log(res)
+    });
   }
 
   onsubmit() {
     console.log(this.myForm.value);
     const body = Object.assign({}, this.myForm.value);
-    this.httpClient.post(`${apiRoot}/hr/applicantVacancy/${this.getVacancyNumber()}/addApplicantVacancy`, body, this.httpOptions).subscribe(data => {
-        console.log(data);
-      }
-    );
-    // if (this.myForm.valid) {
-    //   console.log(this.myForm.value);
-    //   this.myForm.reset();
-    // }
-
   }
+
+  // if (this.myForm.valid) {
+  //   console.log(this.myForm.value);
+  //   this.myForm.reset();
+  // }
 
 
   createFormControls() {
     this.id = new FormControl('', Validators.required);
     this.applicantVacancyName = new FormControl('', Validators.required);
     this.emailApplicant = new FormControl('', Validators.required);
-    this.vacacyNumber = new FormControl('', Validators.required);
+    this.vacacyNumber = new FormControl('');
+    // this.vacacyNumber = new FormControl({{this.vacancy.vacancyNumber}});
     this.dateOnApplicantVacancy = new FormControl('', Validators.required);
     this.status = new FormControl('', Validators.required);
     this.listIdUser = new FormControl('', Validators.required);
@@ -90,17 +98,17 @@ export class CreateApplicantComponent implements OnInit {
 
   createForm() {
     this.myForm = new FormGroup({
-      id: this.id,
+      // id: this.id,
       applicantVacancyName: this.applicantVacancyName,
       emailApplicant: this.emailApplicant,
-      vacacyNumber: this.vacacyNumber,
+      // vacacyNumber: this.vacacyNumber,
       dateOnApplicantVacancy: this.dateOnApplicantVacancy,
       status: this.status,
       listIdUser: this.listIdUser,
       dateOfTheScheduleInterview: this.dateOfTheScheduleInterview,
       startTime: this.startTime,
       endTime: this.endTime,
-      cv: this.cv,
+      // cv: this.cv,
     });
 
   }

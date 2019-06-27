@@ -1,104 +1,4 @@
-<!--Old2-->
-<!--<nav class="navbar navbar-expand-lg">-->
-<!--  <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--    <ul class="navbar-nav mr-auto">-->
-<!--      <li class="nav-item active">-->
-<!--        <a class="nav-link" routerLink="/view-applicant">{{'viewApplicant' | translate}}<span class="sr-only">(current)</span></a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/view-vacancy">{{'viewVacancy' | translate}}</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item dropdown">-->
-<!--        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--          {{'interviewActive' | translate}}-->
-<!--        </a>-->
-<!--        <div class="dropdown-menu " aria-labelledby="navbarDropdown">-->
-<!--     -->
-<!--          <a class="dropdo.0wn-item drop" routerLink="/interviewer/review-applicant">{{'reviewApplicant'|translate}}</a>-->
-<!--          <a class="dropdown-item drop" routerLink="/interviewer/view-review-applicant">{{'viewReviewApplicant' | translate}}</a>-->
-<!--        </div>-->
-<!--      </li>-->
-<!--      <li class="nav-item dropdown" >-->
-<!--        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--          {{'hrActive' | translate}}-->
-<!--        </a>-->
-<!--        <div class="dropdown-menu " aria-labelledby="navbarDropdown" >-->
-<!--          <a class="dropdown-item drop" routerLink="/hr/create-vacancy">Create vacancy</a>-->
-<!--          <a class="dropdown-item drop" routerLink='hr/create-applicant/:vacancyNumber'>Create applicant</a>-->
-<!--        </div>-->
-<!--      </li>-->
-<!--      <li class="nav-item dropdown">-->
-<!--        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--          {{'system' | translate}}-->
-<!--        </a>-->
-<!--        <div class="dropdown-menu " aria-labelledby="navbarDropdown">-->
-<!--          <a class="dropdown-item drop" routerLink="system/changed-password">change Password</a>-->
-<!--          <a class="dropdown-item drop" routerLink="system/profile">Profile</a>-->
-<!--        </div>-->
-<!--      </li>-->
-<!--      <li class="nav-item dropdown">-->
-<!--        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--          {{'recruitment' | translate}}-->
-<!--        </a>-->
-<!--        <div class="dropdown-menu " aria-labelledby="navbarDropdown">-->
-<!--          <a class="dropdown-item drop" routerLink="recruitment/manpower-request">Create vacancy</a>-->
-<!--          <a class="dropdown-item drop" routerLink="recruitment/manpower-request-manager">Manpower request list by manager</a>-->
-<!--          <a class="dropdown-item drop" routerLink="recruitment/applicant-approval">Applicant approval</a>-->
-<!--        </div>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </div>-->
-<!--</nav>-->
 
-<!--Old1-->
-<!--<div class="navbar">-->
-<!--<a routerLink="/view-applicant">View Applicants</a>-->
-<!--<a routerLink="/view-vacancy">View Vacancy</a>-->
-<!--<a routerLink="/carrer">Carrer</a>-->
-<!--<div class="btn-group">-->
-<!--<button type="button" class="dropbtnInterviewer dropdown-toggle" data-toggle="dropdown">Interviewer Active</button>-->
-<!--<ul class="dropdown-menu" role="menu">-->
-<!--<li><a routerLink="/interviewer/review-applicant">Review applicant</a></li>-->
-<!--<li><a routerLink="/interviewer/view-review-applicant">View review applicant</a></li>-->
-<!--</ul>-->
-<!--</div>-->
-
-<!--<div class="btn-group">-->
-<!--<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">-->
-<!--Sony <span class="caret"></span></button>-->
-<!--<ul class="dropdown-menu" role="menu">-->
-<!--<li><a href="#">Tablet</a></li>-->
-<!--<li><a href="#">Smartphone</a></li>-->
-<!--</ul>-->
-<!--</div>-->
-
-<!--<div class="dropdownHR">-->
-<!--<button class="dropbtnHR">HR Active</button>-->
-<!--<div class="dropdownHR-content">-->
-<!--<a routerLink="/hr/create-vacancy">Create vacancy</a>-->
-<!--<a routerLink="/hr/create-applicant">Create applicant</a>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="dropdownSystem">-->
-<!--<button class="dropbtnSystem">System</button>-->
-<!--<div class="dropdownSystem-content">-->
-<!--<a routerLink="system/changed-password">Password change</a>-->
-<!--<a routerLink="system/profile">Profile</a>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="dropdownRecruitment">-->
-<!--<button class="dropbtnRecruitment">Recruitment</button>-->
-<!--<div class="dropdownRecruitment-content">-->
-<!--<a routerLink="recruitment/manpower-request">Manpower request</a>-->
-<!--<a routerLink="recruitment/manpower-request-manager">Manpower request list by manager</a>-->
-<!--<a routerLink="recruitment/applicant-approval">Applicant approval</a>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--New 1.0-->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -114,9 +14,9 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="w3-dropdown-content w3-bar-block w3-card-4">
-      <a class="w3-bar-item w3-button" routerLink="/view-applicant">{{'viewApplicant' | translate}}</a>
+      <a class="w3-bar-item w3-button" routerLink="view-applicant">{{'viewApplicant' | translate}}</a>
       <a class="w3-bar-item w3-button"
-         routerLink='hr/create-applicant/:vacancyNumber'>{{'createApplicant' | translate}}</a>
+         routerLink='create-applicant/:id'>{{'createApplicant' | translate}}</a>
     </div>
   </div>
 
@@ -125,8 +25,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="w3-dropdown-content w3-bar-block w3-card-4">
-      <a class="w3-bar-item w3-button" routerLink="/view-vacancy">{{'viewVacancy' | translate}}</a>
-      <a class="dropdown-item drop" routerLink="hr/create-vacancy">{{'createVacancy' | translate}}</a>
+      <a class="w3-bar-item w3-button" routerLink="view-vacancy">{{'viewVacancy' | translate}}</a>
+      <a class="dropdown-item drop" routerLink="create-vacancy">{{'createVacancy' | translate}}</a>
     </div>
   </div>
 

@@ -35,6 +35,7 @@ export class ViewApplicantComponent implements OnInit {
   startTime: FormControl;
   endTime: FormControl;
   positionList = this.positionService.getAllPosition();
+  idVacancy :number;
 
   constructor(protected httpClient: HttpClient,
               protected candidateService: CandidateService,
@@ -52,10 +53,10 @@ export class ViewApplicantComponent implements OnInit {
     this.createFormControls1();
     this.createForm();
     this.createForm1();
-    const id = this.route.snapshot.paramMap.get('id');
+  this.idVacancy = JSON.parse(this.route.snapshot.paramMap.get('id'));
 
-    if (this.id ) {
-      console.log("id nek  "+id);
+    if (this.id) {
+      console.log("id nek  " + this.idVacancy);
       this.getApplicantsByIdVacancy();
 
     } else {

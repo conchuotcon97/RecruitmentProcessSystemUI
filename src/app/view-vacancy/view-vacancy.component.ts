@@ -7,9 +7,6 @@ import {HttpClient} from '@angular/common/http';
 import {PositionService} from '../service/position.service';
 import {DepartmentService} from '../service/department.service';
 import {Router} from '@angular/router';
-import {User} from '../model/user.model';
-import {Position} from '../model/position.model';
-import {Department} from '../model/department.model';
 
 @Component({
   selector: 'app-view-vacancy',
@@ -118,17 +115,11 @@ export class ViewVacancyComponent implements OnInit {
       requirement: this.requirement,
       description: this.description,
       typeOfStaff: this.typeOfStaff,
-      // idVacancy: this.idVacancy,
       ownedBy: this.ownedBy,
       numberOpening: this.numberOpening,
-      // offer: this.offer,
       dateCreated: this.dateCreated,
       dateClose: this.dateClose,
       status: this.status,
-      // experience: this.experience,
-      // language: this.language,
-      // gender: this.gender,
-      // degree: this.degree,
     });
   }
 
@@ -141,8 +132,7 @@ export class ViewVacancyComponent implements OnInit {
 
   }
   addVacancy(v:VacancyNhan){
-    this.router.navigate(['hr/create-applicant', v.vacancyNumber]);
-    // routerLink="hr/create-vacancy/{{v.vacancyNumber}}"
+    this.router.navigate(['create-applicant', v.vacancyNumber]);
     console.log(v);
   }
 
